@@ -19,7 +19,7 @@ public class BookTests extends BaseClass {
 
 		homePage.goToBooksPage();
 		booksOverview.createBookBtn.click();
-		createBook.uploadFile();
+		createBook.createBook();
 
 	}
 }

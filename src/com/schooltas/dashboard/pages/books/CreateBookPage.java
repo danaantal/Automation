@@ -1,20 +1,13 @@
-package com.schooltas.dashboard.pages.books.createBook;
+package com.schooltas.dashboard.pages.books;
 
 import java.util.ArrayList;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.internal.collections.Pair;
 
 public class CreateBookPage {
-
-	private final WebDriver driver;
-
-	public CreateBookPage(WebDriver driver){
-		this.driver = driver;
-	}
 
 	@FindBy(id = "book.title")
 	WebElement bookTitleField;

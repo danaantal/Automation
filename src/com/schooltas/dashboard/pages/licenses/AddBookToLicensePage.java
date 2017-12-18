@@ -21,4 +21,13 @@ public class AddBookToLicensePage {
 	@FindBy(how = How.CSS, using = "div.alert.alert-success")
 	WebElement alertMessage;
 
+	public void addBookToLicense(){
+
+		searchBookField.click();
+		searchBookField.sendKeys("test");
+		searchBtn.click();
+
+		addBookToLicenseBtn.click();
+		nextBtn.click();
+	}
 }

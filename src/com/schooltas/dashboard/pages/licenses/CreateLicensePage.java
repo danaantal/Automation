@@ -20,4 +20,16 @@ public class CreateLicensePage {
 
 	@FindBy(how = How.CSS, using = "input.btn.btn-primary")
 	WebElement saveBtn;
+
+
+	public void createBookLicense(){
+
+		AddBookToLicensePage addBook = new AddBookToLicensePage();
+		addBook.addBookToLicense();
+
+		licenseNameField.sendKeys("test license automate");
+		licenseMaxUsersField.sendKeys("10");
+		licenseDurationCmbBox.sendKeys("365");
+		saveBtn.click();
+	}
 }

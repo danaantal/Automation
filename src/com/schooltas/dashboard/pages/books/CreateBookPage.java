@@ -36,7 +36,7 @@ public class CreateBookPage {
 	@FindBy(id = "coverFile")
 	WebElement UploadCoverBtn;
 
-	@FindBy(how = How.XPATH, using = "input.btn.btn-primary")
+	@FindBy(how = How.CSS, using = "input.btn.btn-primary")
 	WebElement saveBtn;
 
 	public void createBook() throws InterruptedException {
@@ -46,6 +46,7 @@ public class CreateBookPage {
 		bookDetails.forEach((element) -> {
 			element.first().sendKeys(element.second());
 		});
+
 		uploadFile(uploadPDfBtn, "/Users/dantal/Downloads/PDFs/E-book.pdf");
 		uploadFile(UploadCoverBtn, "/Users/dantal/Downloads/PDFs/test2.jpg");
 
@@ -68,27 +69,8 @@ public class CreateBookPage {
 
 	}
 
-	public ArrayList<String> createListOfBookDetails() {
-		ArrayList<String> bookDetails = new ArrayList<>();
-		bookDetails.add("book title automate");
-		bookDetails.add("1234567893475");
-		// bookDetails.add("Test");
-		// bookDetails.add("book type");
-		bookDetails.add("1990");
-		bookDetails.add("book stream");
-		bookDetails.add("book methode");
-		// upload pdf
-
-		// upload cover
-
-		return bookDetails;
-	}
-
 	public void uploadFile(WebElement element, String filepath) throws InterruptedException {
 
-		// filepath ="/Users/dantal/Downloads/PDFs/E-book.pdf";
-
-		// Added a wait to make you notice the difference.
 		Thread.sleep(1000);
 		element.sendKeys(filepath);
 	}

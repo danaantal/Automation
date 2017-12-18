@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.schooltas.dashboard.tests.enrichmentsTests.AddNewPinTests">
+      <class name="com.schooltas.dashboard.tests.licenseTests.LicenseTests">
         <methods>
+          <include name="createBookLicense"/>
           <include name="beforeTest"/>
           <include name="afterTest"/>
-          <include name="addNewTextInPopupPinThenView"/>
         </methods>
-      </class> <!-- com.schooltas.dashboard.tests.enrichmentsTests.AddNewPinTests -->
+      </class> <!-- com.schooltas.dashboard.tests.licenseTests.LicenseTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

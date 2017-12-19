@@ -25,7 +25,7 @@ public abstract class BaseClass implements ILoginConstants{
 	@BeforeTest
 	public final void beforeTest() {
 		System.out.println("BeforeTest");
-		System.setProperty("webdriver.chrome.driver", "/Users/dantal/Desktop/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\ccostea\\Documents\\chromedriver.exe");
 		driver = BrowserFactory.startBrowser("chrome", "https://backend-test.schooltas.net/dashboard");
 		ActionUtils.loginAs("publisher");
 	}

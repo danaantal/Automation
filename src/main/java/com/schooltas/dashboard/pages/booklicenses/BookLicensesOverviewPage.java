@@ -1,15 +1,15 @@
-package com.schooltas.dashboard.pages.licenses;
+package com.schooltas.dashboard.pages.booklicenses;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class LicensesOverviewPage {
+public class BookLicensesOverviewPage {
 
 	private final WebDriver driver;
 
-	public LicensesOverviewPage(WebDriver driver){
+	public BookLicensesOverviewPage(WebDriver driver){
 		this.driver = driver;
 	}
 

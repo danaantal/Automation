@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.pages.licenses;
+package com.schooltas.dashboard.pages.booklicenses;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,10 +9,10 @@ public class AddBookToLicensePage {
 	@FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[2]/div/table/tbody/tr[1]/td[1]/form/button")
 	WebElement addBookToLicenseBtn;
 
-	@FindBy(how = How.CSS, using = "input.input-medium.search-query")
+	@FindBy(id = "searchInput")
 	WebElement searchBookField;
 
-	@FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[2]/div/form/button")
+	@FindBy(id = "searchBtn")
 	WebElement searchBtn;
 
 	@FindBy(how = How.CSS, using = "a.btn.btn-primary.pull-right")
@@ -23,7 +23,6 @@ public class AddBookToLicensePage {
 
 	public void addBookToLicense(){
 
-		searchBookField.click();
 		searchBookField.sendKeys("test");
 		searchBtn.click();
 

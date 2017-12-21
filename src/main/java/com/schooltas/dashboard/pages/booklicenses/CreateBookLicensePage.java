@@ -1,10 +1,18 @@
-package com.schooltas.dashboard.pages.licenses;
+package com.schooltas.dashboard.pages.booklicenses;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
-public class CreateLicensePage {
+public class CreateBookLicensePage {
+
+	private final WebDriver driver;
+
+	public CreateBookLicensePage(WebDriver driver){
+		this.driver = driver;
+	}
 
 	@FindBy(id = "licenseCode.name")
 	WebElement licenseNameField;
@@ -24,7 +32,7 @@ public class CreateLicensePage {
 
 	public void createBookLicense(){
 
-		AddBookToLicensePage addBook = new AddBookToLicensePage();
+		AddBookToLicensePage addBook = PageFactory.initElements(driver, AddBookToLicensePage.class);
 		addBook.addBookToLicense();
 
 		licenseNameField.sendKeys("test license automate");

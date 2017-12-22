@@ -41,7 +41,9 @@ public class CreateBookPage {
 
 	public void createBook() throws InterruptedException {
 
-		ArrayList<Pair<WebElement, String>> bookDetails = createPairOfWebElementsAndValues();
+		bookYearField.clear();
+
+		ArrayList<Pair<WebElement, String>> bookDetails = createBookDetailsInputList();
 
 		bookDetails.forEach((element) -> {
 			element.first().sendKeys(element.second());
@@ -54,7 +56,7 @@ public class CreateBookPage {
 
 	}
 
-	public ArrayList<Pair<WebElement, String>> createPairOfWebElementsAndValues() {
+	public ArrayList<Pair<WebElement, String>> createBookDetailsInputList() {
 		ArrayList<Pair<WebElement, String>> createBookFormPairs = new ArrayList<>();
 
 		createBookFormPairs.add(new Pair<>(bookTitleField, "book title automate"));

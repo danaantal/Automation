@@ -16,5 +16,4 @@ public class BookLicensesOverviewPage {
 	@FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[1]/div/ul/li[4]/a")
 	public WebElement createBookLicenseBtn;
 
-
 }

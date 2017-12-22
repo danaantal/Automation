@@ -30,4 +30,9 @@ public class HomePage {
 		licensesBtn.click();
 		bookLicensesBtn.click();
 	}
+	
+	public void goToTeacherLicensesPage(){
+		licensesBtn.click();
+		teacherLicensesBtn.click();
+	}
 }

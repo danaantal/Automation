@@ -42,13 +42,13 @@ public class CreateBookLicensePage {
 		ArrayList<Pair<WebElement, String>> licenseDetailsList = createLicenseDetailsInputList();
 
 		licenseDetailsList.forEach((element) -> {
-			if(!element.first().getText().equals(null)){
-				element.first().clear();
-				element.first().sendKeys(element.second());
-			}
-			else{
-				element.first().sendKeys(element.second());
-			}
+			//			if(!element.first().getText().equals(null)){
+			//				element.first().clear();
+			//				element.first().sendKeys(element.second());
+			//			}
+			//			else{
+			element.first().sendKeys(element.second());
+			//			}
 		});
 
 		saveBtn.click();

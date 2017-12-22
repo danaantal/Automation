@@ -9,15 +9,17 @@ import com.schooltas.dashboard.pages.teacherlicenses.TeacherLicensesOverviewPage
 import com.schooltas.dashboard.tests.BaseClass;
 
 public class TeacherLicenseTests extends BaseClass{
-	
+
 	@Test
-	public void createTeacherLicense(){
+	public void createTeacherLicense() throws InterruptedException{
+
 		HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 		TeacherLicensesOverviewPage teacherLicensesPage = PageFactory.initElements(driver, TeacherLicensesOverviewPage.class);
 		CreateTeacherLicensePage createTeacherLicensePage = PageFactory.initElements(driver, CreateTeacherLicensePage.class);
-		
-		homePage.goToBookLicencesPage();
+
+		homePage.goToTeacherLicensesPage();
 		teacherLicensesPage.createTeacherLicenseBtn.click();
 		createTeacherLicensePage.createTeacherLicense();
+
 	}
 }

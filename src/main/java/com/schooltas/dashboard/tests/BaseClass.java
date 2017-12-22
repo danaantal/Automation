@@ -10,16 +10,6 @@ import com.schooltas.dashboard.utils.ILoginConstants;
 
 public abstract class BaseClass implements ILoginConstants{
 
-	// public static void main(String[] args) {
-	// // TODO Auto-generated method stub
-	// //This creates an dynamic firefox object (an instance of firefox)
-	// System.setProperty("webdriver.chrome.driver","/Users/dantal/Desktop/chromedriver");
-	// WebDriver driver = new ChromeDriver();
-	//
-	// //Close the instance of browser
-	// driver.close();
-	// }
-
 	protected static WebDriver driver;
 
 	@BeforeTest

@@ -53,10 +53,16 @@ public class BookLicenseDetailsPage {
 		ArrayList<Pair<WebElement, String>> licenseDetailsList = createLicense.createLicenseDetailsInputList();
 		Map<String, String> licenseDetailsMap = createBookLicenseDetailsMap();
 
-		for(Pair<WebElement, String> licenseDetail : licenseDetailsList){
-			String elementName = licenseDetail.first().getText();
-			assertEquals(licenseDetail.second(), licenseDetailsMap.get(elementName));
+		assertEquals(licenseDetailsMap.get("License name"), licenseDetailsList.get(0).second());
 
-		}
+		//		for(String licenseDetail : licenseDetailsMap.values()){
+		//			String elementName = licenseDetail.first().getText();
+		//			assertEquals(licenseDetail.second(), licenseDetailsMap.get(elementName));
+		//
+		//		}
+		//
+		//		for(String licenseDetail : licenseDetailsMap.values()){
+		//			assertEquals(licenseDetail.second(), licenseDetailsMap.get(elementName));
+		//		}
 	}
 }

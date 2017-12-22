@@ -21,6 +21,6 @@ public class LicenseTests extends BaseClass{
 		homePage.goToBookLicencesPage();
 		licensesPage.createBookLicenseBtn.click();
 		createLicensePage.createBookLicense();
-		//licenseDetailsPage.assertBookLicenseDetails();
+		licenseDetailsPage.assertBookLicenseDetails();
 	}
 }

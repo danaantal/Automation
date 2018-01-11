@@ -1,5 +1,8 @@
 package com.schooltas.dashboard.utils;
 
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.schooltas.dashboard.pages.loginPage.LoginPage;
@@ -22,6 +25,17 @@ public class ActionUtils extends BaseClass {
 		// return Constants.KEYWORD_PASS;
 	}
 
+	public static void clickMenuItem(List<WebElement> children, String menuItem){
+
+		for(WebElement element : children){
+			if(element.getTagName().equals("li")) {
+				if(element.getText().equals(menuItem)){
+					element.click(); break;
+				}
+			}
+		}
+	}
+
 	public static void loginAs(String organization) {
 
 		LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
@@ -34,4 +48,6 @@ public class ActionUtils extends BaseClass {
 			loginPage.loginDashboard(TEST_SCHOOL_EMAIL, TEST_SCHOOL_PASS);
 		}
 	}
+
+
 }

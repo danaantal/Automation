@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import com.schooltas.dashboard.pages.books.BooksOverviewPage;
 import com.schooltas.dashboard.pages.books.bookEditor.AddNewPinPage;
 import com.schooltas.dashboard.pages.books.bookEditor.EditBookViewerPage;
-import com.schooltas.dashboard.pages.homePage.HomePage;
 import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.ILoginConstants;
 
@@ -17,8 +16,6 @@ public class AddNewPinTests extends BaseClass implements ILoginConstants {
 	@Test
 	public void addNewTextInPopupPinThenView() throws InterruptedException {
 		// Created Page Object using Page Factory
-
-		HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 		BooksOverviewPage booksPage = PageFactory.initElements(driver, BooksOverviewPage.class);
 		EditBookViewerPage editBookViewerPage = PageFactory.initElements(driver, EditBookViewerPage.class);
 		AddNewPinPage addPinPage = PageFactory.initElements(driver, AddNewPinPage.class);

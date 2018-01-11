@@ -15,6 +15,8 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.internal.collections.Pair;
 
+import com.schooltas.dashboard.utils.ActionUtils;
+
 public class BookLicenseDetailsPage {
 
 	private final WebDriver driver;
@@ -26,6 +28,14 @@ public class BookLicenseDetailsPage {
 	@FindBy(how = How.CLASS_NAME, using = "dl-horizontal")
 	WebElement licenseDetails;
 
+	@FindBy(how = How.CSS, using = "ul.nav.nav-list")
+	WebElement leftMenuList;
+
+	public void clickMenuItemInLicenseDetails(String menuItem){
+
+		List<WebElement> children = leftMenuList.findElements(By.xpath(".//*"));
+		ActionUtils.clickMenuItem(children, menuItem);
+	}
 
 	public Map<String, String> createBookLicenseDetailsMap(){
 
@@ -50,10 +60,11 @@ public class BookLicenseDetailsPage {
 	public void assertBookLicenseDetails() {
 		CreateBookLicensePage createLicense = PageFactory.initElements(driver, CreateBookLicensePage.class);
 
-		ArrayList<Pair<WebElement, String>> licenseDetailsList = createLicense.createLicenseDetailsInputList();
+		ArrayList<Pair<WebElement, String>> licenseInputList = createLicense.createLicenseDetailsInputList();
 		Map<String, String> licenseDetailsMap = createBookLicenseDetailsMap();
 
-		assertEquals(licenseDetailsMap.get("License name"), licenseDetailsList.get(0).second());
+		assertEquals(licenseDetailsMap.get("License name"), licenseInputList.get(0).second());
+		assertEquals(licenseDetailsMap.get("Maximum users"), licenseInputList.get(1).second());
 
 		//		for(String licenseDetail : licenseDetailsMap.values()){
 		//			String elementName = licenseDetail.first().getText();

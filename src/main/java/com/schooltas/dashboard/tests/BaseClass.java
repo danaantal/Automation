@@ -1,9 +1,11 @@
 package com.schooltas.dashboard.tests;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import com.schooltas.dashboard.pages.homePage.HomePage;
 import com.schooltas.dashboard.utils.ActionUtils;
 import com.schooltas.dashboard.utils.BrowserFactory;
 import com.schooltas.dashboard.utils.ILoginConstants;
@@ -11,6 +13,7 @@ import com.schooltas.dashboard.utils.ILoginConstants;
 public abstract class BaseClass implements ILoginConstants{
 
 	protected static WebDriver driver;
+	protected HomePage homePage;
 
 	@BeforeTest
 	public final void beforeTest() {
@@ -19,6 +22,7 @@ public abstract class BaseClass implements ILoginConstants{
 		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\ccostea\\Documents\\chromedriver.exe");
 		driver = BrowserFactory.startBrowser("chrome", "https://backend-test.schooltas.net/dashboard");
 		ActionUtils.loginAs("publisher");
+		homePage = PageFactory.initElements(driver, HomePage.class);
 	}
 
 	@AfterTest

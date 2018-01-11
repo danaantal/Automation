@@ -23,14 +23,14 @@ public class HomePage {
 
 
 	public void goToBooksPage(){
-	booksBtn.click();
+		booksBtn.click();
 	}
 
 	public void goToBookLicencesPage(){
 		licensesBtn.click();
 		bookLicensesBtn.click();
 	}
-	
+
 	public void goToTeacherLicensesPage(){
 		licensesBtn.click();
 		teacherLicensesBtn.click();

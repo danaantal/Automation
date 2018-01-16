@@ -12,11 +12,11 @@ public class HomePage {
 	@FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/ul[2]/li[2]/a")
 	public WebElement booksBtn;
 
-	@FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/ul[2]/li[3]/a")
+	@FindBy(how = How.XPATH, using = "//li[@class='dropdown' and contains(.,'Licenses')]")
 	WebElement licensesBtn;
 
-	@FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/ul[2]/li[3]/ul/li[1]/a")
-	WebElement bookLicensesBtn;
+	@FindBy(how = How.XPATH, using = "(//a[contains(.,'licenses')])[1]")
+	WebElement bookLicensesBtn;	
 
 	@FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/ul[2]/li[3]/ul/li[2]/a")
 	public WebElement teacherLicensesBtn;

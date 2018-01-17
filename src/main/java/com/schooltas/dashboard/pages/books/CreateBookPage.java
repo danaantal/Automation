@@ -39,15 +39,16 @@ public class CreateBookPage {
 	@FindBy(how = How.CSS, using = "input.btn.btn-primary")
 	WebElement saveBtn;
 
-	public void createBook() throws InterruptedException {
+	public void createBook(String ean) throws InterruptedException {
 
 		bookYearField.clear();
 
-		ArrayList<Pair<WebElement, String>> bookDetails = createBookDetailsInputList();
+		ArrayList<Pair<WebElement, String>> bookDetails = createBookDetailsInputList(ean);
 
 		bookDetails.forEach((element) -> {
 			element.first().sendKeys(element.second());
 		});
+		bookEanField.sendKeys(ean);
 
 		uploadFile(uploadPDfBtn, "/Users/dantal/Downloads/PDFs/E-book.pdf");
 		uploadFile(UploadCoverBtn, "/Users/dantal/Downloads/PDFs/test2.jpg");
@@ -56,11 +57,11 @@ public class CreateBookPage {
 
 	}
 
-	public ArrayList<Pair<WebElement, String>> createBookDetailsInputList() {
+	public ArrayList<Pair<WebElement, String>> createBookDetailsInputList(String ean) {
 		ArrayList<Pair<WebElement, String>> createBookFormPairs = new ArrayList<>();
 
 		createBookFormPairs.add(new Pair<>(bookTitleField, "book title automate"));
-		createBookFormPairs.add(new Pair<>(bookEanField, String.valueOf(generateIsbnRandom())));
+		createBookFormPairs.add(new Pair<>(bookEanField, ean));
 		createBookFormPairs.add(new Pair<>(bookSubjectField, "#Test"));
 		createBookFormPairs.add(new Pair<>(bookTypeField, "Coursebook"));
 		createBookFormPairs.add(new Pair<>(bookYearField, "1990"));
@@ -77,12 +78,5 @@ public class CreateBookPage {
 		element.sendKeys(filepath);
 	}
 
-	public static long generateIsbnRandom() {
-		while (true) {
-			long numb = (long) (Math.random() * 100000000 * 1000000);
-			if (String.valueOf(numb).length() == 13) {
-				return numb;
-			}
-		}
-	}
+
 }

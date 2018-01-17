@@ -1,17 +1,16 @@
 package com.schooltas.dashboard.pages.books.bookEditor;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class AddNewPinPage {
 
-	private final WebDriver driver;
-
-	public AddNewPinPage(WebDriver driver) {
-		this.driver = driver;
-	}
+	//	private final WebDriver driver;
+	//
+	//	public AddNewPinPage(WebDriver driver) {
+	//		this.driver = driver;
+	//	}
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"editor-page\"]/div[16]/div[2]/button[1]")
 	public WebElement textInPopupBtn;

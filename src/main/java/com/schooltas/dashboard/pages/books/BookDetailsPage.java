@@ -1,22 +1,38 @@
 package com.schooltas.dashboard.pages.books;
 
-import java.util.List;
+import static org.testng.Assert.assertEquals;
 
-import org.openqa.selenium.By;
+import java.util.ArrayList;
+import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.internal.collections.Pair;
 
-import com.schooltas.dashboard.utils.ActionUtils;
+import com.schooltas.dashboard.templates.entitydetails.EntityDetails;
 
 public class BookDetailsPage {
 
-	@FindBy(how = How.CSS, using = "ul.nav.nav-list")
-	WebElement leftMenuList;
+	private final WebDriver driver;
 
-	public void clickMenuItemInBookDetails(String menuItem){
-		List<WebElement> children = leftMenuList.findElements(By.xpath(".//*"));
-		ActionUtils.clickMenuItem(children, menuItem);
+	public BookDetailsPage(WebDriver driver){
+		this.driver = driver;
+	}
 
+	public void assertBookDetails(String ean) {
+		CreateBookPage createBookPage = PageFactory.initElements(driver, CreateBookPage.class);
+		EntityDetails details = PageFactory.initElements(driver, EntityDetails.class);
+
+		ArrayList<Pair<WebElement, String>> bookInputList = createBookPage.createBookDetailsInputList(ean);
+		Map<String, String> bookDetailsMap = details.createEntityDetailsMap();
+
+		assertEquals(bookDetailsMap.get("Title"), bookInputList.get(0).second());
+		assertEquals(bookDetailsMap.get("E-ISBN"), bookInputList.get(1).second());
+		assertEquals(bookDetailsMap.get("Course"), bookInputList.get(2).second());
+		assertEquals(bookDetailsMap.get("Book type"), bookInputList.get(3).second());
+		assertEquals(bookDetailsMap.get("Year"), bookInputList.get(4).second());
+		assertEquals(bookDetailsMap.get("Stream"), bookInputList.get(5).second());
+		assertEquals(bookDetailsMap.get("Series"), bookInputList.get(6).second());
 	}
 }

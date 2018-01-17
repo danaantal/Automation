@@ -32,8 +32,6 @@ public class CreateBookLicensePage {
 	@FindBy(how = How.CSS, using = "input.btn.btn-primary")
 	WebElement saveBtn;
 
-
-
 	public void createBookLicense() {
 
 		AddBookToLicensePage addBook = PageFactory.initElements(driver, AddBookToLicensePage.class);

@@ -5,7 +5,8 @@ import org.testng.annotations.Test;
 
 import com.schooltas.dashboard.pages.books.BookDetailsPage;
 import com.schooltas.dashboard.pages.books.CreateBookPage;
-import com.schooltas.dashboard.templates.leftmenu.LeftMenuTemplate;
+import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
+import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.ActionUtils;
 
@@ -17,9 +18,10 @@ public class BookTests extends BaseClass {
 		CreateBookPage createBook = PageFactory.initElements(driver, CreateBookPage.class);
 		LeftMenuTemplate leftMenu = PageFactory.initElements(driver, LeftMenuTemplate.class);
 		BookDetailsPage bookDetails = PageFactory.initElements(driver, BookDetailsPage.class);
+		DashboardMenuTemplate dashboardMenu = PageFactory.initElements(driver, DashboardMenuTemplate.class);
 		String ean = String.valueOf(ActionUtils.generateIsbnRandom());
 
-		homePage.goToBooksPage();
+		dashboardMenu.clickMainMenuOption("Books");
 		leftMenu.clickMenuItem("Create book");
 		createBook.createBook(ean);
 		bookDetails.assertBookDetails(ean);

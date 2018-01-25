@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.pages.booklicenses;
+package com.schooltas.dashboard.pages.teacherlicenses;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -13,16 +13,16 @@ import org.testng.internal.collections.Pair;
 
 import com.schooltas.dashboard.templates.entitydetails.EntityDetails;
 
-public class BookLicenseDetailsPage {
-
+public class TeacherLicenseDetailsPage {
 	private final WebDriver driver;
 
-	public BookLicenseDetailsPage(WebDriver driver) {
+	public TeacherLicenseDetailsPage(WebDriver driver){
 		this.driver = driver;
 	}
 
-	public void assertBookLicenseDetails() {
-		CreateBookLicensePage createLicense = PageFactory.initElements(driver, CreateBookLicensePage.class);
+
+	public void assertReaderLicenseDetails() {
+		CreateTeacherLicensePage createLicense = PageFactory.initElements(driver, CreateTeacherLicensePage.class);
 		EntityDetails details = PageFactory.initElements(driver, EntityDetails.class);
 
 		ArrayList<Pair<WebElement, String>> licenseInputList = createLicense.createLicenseDetailsInputList();
@@ -31,15 +31,5 @@ public class BookLicenseDetailsPage {
 		assertEquals(licenseDetailsMap.get("License name"), licenseInputList.get(0).second());
 		assertEquals(licenseDetailsMap.get("Maximum users"), licenseInputList.get(1).second());
 		assertNotNull(licenseDetailsMap.get("License code (bundle code)"));
-
-		//		for(String licenseDetail : licenseDetailsMap.values()){
-		//			String elementName = licenseDetail.first().getText();
-		//			assertEquals(licenseDetail.second(), licenseDetailsMap.get(elementName));
-		//
-		//		}
-		//
-		//		for(String licenseDetail : licenseDetailsMap.values()){
-		//			assertEquals(licenseDetail.second(), licenseDetailsMap.get(elementName));
-		//		}
 	}
 }

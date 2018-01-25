@@ -16,9 +16,9 @@ public class HomePage {
 	WebElement licensesBtn;
 
 	@FindBy(how = How.XPATH, using = "(//a[contains(.,'licenses')])[1]")
-	WebElement bookLicensesBtn;	
+	WebElement bookLicensesBtn;
 
-	@FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/ul[2]/li[3]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/ul[2]/li[2]/ul/li[2]/a")
 	public WebElement teacherLicensesBtn;
 
 

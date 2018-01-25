@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.templates.leftmenu;
+package com.schooltas.dashboard.templates.menus;
 
 import java.util.List;
 

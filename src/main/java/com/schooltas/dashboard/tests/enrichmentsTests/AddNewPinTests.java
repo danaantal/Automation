@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import com.schooltas.dashboard.pages.books.BooksOverviewPage;
 import com.schooltas.dashboard.pages.books.bookEditor.AddNewPinPage;
 import com.schooltas.dashboard.pages.books.bookEditor.EditBookViewerPage;
+import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.ILoginConstants;
 
@@ -19,17 +20,15 @@ public class AddNewPinTests extends BaseClass implements ILoginConstants {
 		BooksOverviewPage booksPage = PageFactory.initElements(driver, BooksOverviewPage.class);
 		EditBookViewerPage editBookViewerPage = PageFactory.initElements(driver, EditBookViewerPage.class);
 		AddNewPinPage addPinPage = PageFactory.initElements(driver, AddNewPinPage.class);
+		DashboardMenuTemplate dashboardMenu = PageFactory.initElements(driver, DashboardMenuTemplate.class);
 
-		homePage.booksBtn.click();
+		dashboardMenu.clickMainMenuOption("Books");
 		booksPage.editBtn.click();
 		//ActionUtils.switchwindow();
 
-		//editBookViewerPage.WaitForElementToFinish(editBookViewerPage.loaderPercentage);
 		editBookViewerPage.WaitForText(editBookViewerPage.loaderPercentage, "One moment, please... (100%)");
-		//Thread.sleep(10000);
 		editBookViewerPage.WaitForElement(editBookViewerPage.pageOverlay);
 		EditBookViewerPage.rightClick(editBookViewerPage.pageOverlay);
-		//editBookViewerPage.bla();
 
 		editBookViewerPage.WaitForElement(editBookViewerPage.addNewPinBtn);
 		editBookViewerPage.addNewPinBtn.click();

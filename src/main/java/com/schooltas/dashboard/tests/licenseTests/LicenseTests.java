@@ -14,7 +14,6 @@ public class LicenseTests extends BaseClass{
 
 	@Test
 	public void createBookLicense(){
-		//BookLicensesOverviewPage licensesPage = PageFactory.initElements(driver, BookLicensesOverviewPage.class);
 		CreateBookLicensePage createLicensePage = PageFactory.initElements(driver, CreateBookLicensePage.class);
 		BookLicenseDetailsPage licenseDetailsPage = PageFactory.initElements(driver, BookLicenseDetailsPage.class);
 		LeftMenuTemplate leftMenu = PageFactory.initElements(driver, LeftMenuTemplate.class);
@@ -29,11 +28,10 @@ public class LicenseTests extends BaseClass{
 	@Test
 	public void editBookLicense(){
 		BookLicensesOverviewPage licensesPage = PageFactory.initElements(driver, BookLicensesOverviewPage.class);
-		//CreateBookLicensePage createLicensePage = PageFactory.initElements(driver, CreateBookLicensePage.class);
-		//BookLicenseDetailsPage licenseDetailsPage = PageFactory.initElements(driver, BookLicenseDetailsPage.class);
 		LeftMenuTemplate leftMenu = PageFactory.initElements(driver, LeftMenuTemplate.class);
+		DashboardMenuTemplate dashboardMenu = PageFactory.initElements(driver, DashboardMenuTemplate.class);
 
-		homePage.goToBookLicencesPage();
+		dashboardMenu.clickMainMenuOption("Book licenses");
 		licensesPage.clickLicense();
 		leftMenu.clickMenuItem("Create Books license");
 	}

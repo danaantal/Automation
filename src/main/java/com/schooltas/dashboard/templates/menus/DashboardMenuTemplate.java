@@ -12,40 +12,42 @@ public class DashboardMenuTemplate {
 	@FindBy(how = How.CSS, using = "ul.nav")
 	public List<WebElement> dashboardMenu;
 
-	@FindBy(how = How.CSS, using = "ul.dropdown-menu")
-	public WebElement licenseDropdown;
-
 	public void clickMainMenuOption(String menuItem){
-		System.out.println(dashboardMenu.size());
 
 		List<WebElement> children = dashboardMenu.get(1).findElements(By.xpath(".//*"));
-		//		children.forEach(el -> {
-		//			System.out.println(el.getTagName());
-		//			System.out.println(el.getText());
-		//		});
-		findMainMenuItemAndClickIt(children, menuItem);
+		findMainMenuItem(children, menuItem);
 	}
 
-	public void findMainMenuItemAndClickIt(List<WebElement> children, String menuItem){
+	private void findMainMenuItem(List<WebElement> children, String menuItem){
 
 		for(WebElement element : children){
-			if(element.getTagName().equals("a")) {
-				if(element.getText().equals(menuItem)){
-					element.click();
-					return;
-				}
-			}
-			else if(element.getTagName().equals("li") && element.getText().equals("Licenses")){
+			boolean isLink = element.getTagName().equals("a");
+			boolean isMenuItem = element.getText().equals(menuItem);
+			boolean isListItem = element.getTagName().equals("li");
+			boolean isLicenseBtn = element.getText().equals("Licenses");
+
+			if(isLink && isMenuItem) {
 				element.click();
-				List<WebElement> licenseChildren = element.findElements(By.xpath(".//a"));
-				for(WebElement el : licenseChildren){
-					//System.out.println(el.getTagName() + el.getText());
-					if(el.getText().equals(menuItem)){
-						el.click();
-						return;
-					}
-				}
+				return;
+			}
+			else if(isListItem && isLicenseBtn){
+				element.click();
+				findSubmenuItem(element, menuItem);
+				return;
+			}
+		}
+	}
+
+	private void findSubmenuItem(WebElement element, String menuItem){
+
+		List<WebElement> licenseChildren = element.findElements(By.xpath(".//a"));
+		for(WebElement el : licenseChildren){
+			boolean isMenuItem = el.getText().equals(menuItem);
+
+			if(isMenuItem){
+				el.click(); break;
 			}
 		}
 	}
 }
+

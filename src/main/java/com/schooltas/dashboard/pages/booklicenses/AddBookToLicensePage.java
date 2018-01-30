@@ -6,7 +6,7 @@ import org.openqa.selenium.support.How;
 
 public class AddBookToLicensePage {
 
-	@FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[2]/div/table/tbody/tr[1]/td[1]/form/button")
+	@FindBy(how = How.XPATH, using = "//*[@id='mainContent']/table/tbody/tr[1]/td[1]/form/button")
 	WebElement addBookToLicenseBtn;
 
 	@FindBy(id = "searchInput")

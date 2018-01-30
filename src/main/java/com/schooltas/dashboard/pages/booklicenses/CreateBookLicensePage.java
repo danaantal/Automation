@@ -38,7 +38,6 @@ public class CreateBookLicensePage {
 		addBook.addBookToLicense();
 
 		ArrayList<Pair<WebElement, String>> licenseDetailsList = createLicenseDetailsInputList();
-
 		licenseDetailsList.forEach((element) -> {
 			//			if(!element.first().getText().isEmpty()){
 			//				if(element.first().getTagName().matches("input")) {

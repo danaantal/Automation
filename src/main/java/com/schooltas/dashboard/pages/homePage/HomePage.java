@@ -11,19 +11,29 @@ public class HomePage {
 
 	@FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/ul[2]/li[2]/a")
 	public WebElement booksBtn;
+	
+	@FindBy(how = How.XPATH, using = "//a[contains(.,'Readers')]")
+	WebElement readersBtn;
 
 	@FindBy(how = How.XPATH, using = "//li[@class='dropdown' and contains(.,'Licenses')]")
 	WebElement licensesBtn;
 
 	@FindBy(how = How.XPATH, using = "(//a[contains(.,'licenses')])[1]")
-	WebElement bookLicensesBtn;
+	WebElement bookLicensesBtn;	
 
 	@FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div/ul[2]/li[2]/ul/li[2]/a")
 	public WebElement teacherLicensesBtn;
+	
+	@FindBy(how = How.XPATH, using = "//a[@href='/dashboard/subscriptions']")
+	public WebElement subscriptionsBtn;
 
 
 	public void goToBooksPage(){
 		booksBtn.click();
+	}
+	
+	public void goToReadersPage(){
+		readersBtn.click();
 	}
 
 	public void goToBookLicencesPage(){
@@ -34,5 +44,9 @@ public class HomePage {
 	public void goToTeacherLicensesPage(){
 		licensesBtn.click();
 		teacherLicensesBtn.click();
+	}
+	
+	public void goToSubscriptionsPage(){
+		subscriptionsBtn.click();
 	}
 }

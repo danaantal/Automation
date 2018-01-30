@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import com.schooltas.dashboard.pages.readerlicenses.CreateReaderLicensePage;
 import com.schooltas.dashboard.pages.readerlicenses.ReaderLicenseDetailsPage;
+import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
 import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
 
@@ -15,8 +16,9 @@ public class ReaderLicenseTests extends BaseClass{
 		CreateReaderLicensePage createReaderLicensePage = PageFactory.initElements(driver, CreateReaderLicensePage.class);
 		LeftMenuTemplate leftMenu = PageFactory.initElements(driver, LeftMenuTemplate.class);
 		ReaderLicenseDetailsPage readerLicenseDetails = PageFactory.initElements(driver, ReaderLicenseDetailsPage.class);
+		DashboardMenuTemplate dashboardMenu = PageFactory.initElements(driver, DashboardMenuTemplate.class);
 
-		homePage.goToBookLicencesPage();
+		dashboardMenu.clickMainMenuOption("Reader licenses");
 		leftMenu.clickMenuItem("Create Readers license");
 		createReaderLicensePage.createReaderLicense();
 		readerLicenseDetails.assertReaderLicenseDetails();

@@ -48,7 +48,6 @@ public class CreateBookPage {
 		bookDetails.forEach((element) -> {
 			element.first().sendKeys(element.second());
 		});
-		bookEanField.sendKeys(ean);
 
 		uploadFile(uploadPDfBtn, "/Users/dantal/Downloads/PDFs/E-book.pdf");
 		uploadFile(UploadCoverBtn, "/Users/dantal/Downloads/PDFs/test2.jpg");

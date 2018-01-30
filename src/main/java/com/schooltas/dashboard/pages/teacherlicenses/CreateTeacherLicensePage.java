@@ -26,7 +26,7 @@ public class CreateTeacherLicensePage {
 	WebElement saveBtn;
 
 
-	public void createTeacherLicense() throws InterruptedException{
+	public void createTeacherLicense(){
 
 		ArrayList<Pair<WebElement, String>> licenseDetailsList = createLicenseDetailsInputList();
 

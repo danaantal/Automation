@@ -13,7 +13,7 @@ public class BookLicensesOverviewPage {
 	//	}
 
 	@FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[2]/div/table/tbody/tr[1]/td[1]/a")
-	public WebElement bookLicenseItem;
+	private WebElement bookLicenseItem;
 
 	public void clickLicense(){
 		bookLicenseItem.click();

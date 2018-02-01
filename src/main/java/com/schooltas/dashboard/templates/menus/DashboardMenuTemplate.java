@@ -10,7 +10,7 @@ import org.openqa.selenium.support.How;
 public class DashboardMenuTemplate {
 
 	@FindBy(how = How.CSS, using = "ul.nav")
-	public List<WebElement> dashboardMenu;
+	private List<WebElement> dashboardMenu;
 
 	public void clickMainMenuOption(String menuItem){
 

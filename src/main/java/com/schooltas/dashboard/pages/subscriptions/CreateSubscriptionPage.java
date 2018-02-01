@@ -8,16 +8,16 @@ import org.openqa.selenium.support.How;
 import org.testng.internal.collections.Pair;
 
 public class CreateSubscriptionPage {
-		
+
 	@FindBy(id = "userLimit")
-	public WebElement numberOfUsersField;
-	
+	private WebElement numberOfUsersField;
+
 	@FindBy(id = "expirationDate")
-	public WebElement expirationDateField;
-	
+	private WebElement expirationDateField;
+
 	@FindBy(how = How.CSS, using = "[type=\"submit\"]")
-	public WebElement saveBtn;
-	
+	private WebElement saveBtn;
+
 	public void createSubscription()
 	{
 		numberOfUsersField.clear();
@@ -25,13 +25,13 @@ public class CreateSubscriptionPage {
 		expirationDateField.sendKeys("01/01/2021");
 		saveBtn.click();
 	}
-	
+
 	public ArrayList<Pair<WebElement,String>> createSubscriptionInputList()
 	{
 		ArrayList<Pair<WebElement, String>> createSubscriptionFormPairs = new ArrayList<>();
 		createSubscriptionFormPairs.add(new Pair<>(numberOfUsersField,"10"));
 		createSubscriptionFormPairs.add(new Pair<>(expirationDateField,"05/01/2020"));
-		
-		return createSubscriptionFormPairs; 
+
+		return createSubscriptionFormPairs;
 	}
 }

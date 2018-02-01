@@ -26,13 +26,13 @@ public class EditBookViewerPage {
 	public WebElement addNewPinBtn;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"editor-page\"]/div[16]/div[1]/button[2]")
-	WebElement addNewAnswerBtn;
+	private WebElement addNewAnswerBtn;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"editor-page\"]/div[16]/div[1]/button[3]")
-	WebElement addNewInternalLinkButton;
+	private WebElement addNewInternalLinkButton;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"editor-page\"]/div[16]/div[1]/button[4]")
-	WebElement addNewImageHotspotsBtn;
+	private WebElement addNewImageHotspotsBtn;
 
 	@FindBy(how = How.CSS, using = ".prikker-container.show-markers")
 	public WebElement pageOverlay;
@@ -42,7 +42,7 @@ public class EditBookViewerPage {
 	public WebElement loaderPercentage;
 
 	@FindBy(id = "booktitle-popup")
-	public WebElement bookTitlePopup;
+	private WebElement bookTitlePopup;
 
 	public void WaitForText(WebElement element, String text) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);

@@ -18,19 +18,19 @@ public class CreateBookLicensePage {
 	}
 
 	@FindBy(id = "licenseCode.name")
-	WebElement licenseNameField;
+	private WebElement licenseNameField;
 
 	@FindBy(id = "licenseCode.maxUsers")
-	WebElement licenseMaxUsersField;
+	private WebElement licenseMaxUsersField;
 
 	@FindBy(id = "licenseCode.licenseDuration")
-	WebElement licenseDurationCmbBox;
+	private WebElement licenseDurationCmbBox;
 
 	@FindBy(id = "licenseCode.expirationDate")
-	WebElement licenseExpirationDatePicker;
+	private WebElement licenseExpirationDatePicker;
 
 	@FindBy(how = How.CSS, using = "input.btn.btn-primary")
-	WebElement saveBtn;
+	private WebElement saveBtn;
 
 	public void createBookLicense() {
 

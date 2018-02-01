@@ -13,13 +13,13 @@ public class LoginPage {
 	//	}
 
 	@FindBy(name="email")
-	WebElement emailAddressField;
+	private WebElement emailAddressField;
 
 	@FindBy(name="password")
-	WebElement passwordField;
+	private WebElement passwordField;
 
 	@FindBy(how = How.XPATH, using="/html/body/div[2]/form/button")
-	WebElement signInbutton;
+	private WebElement signInbutton;
 
 
 	public void loginDashboard(String email, String password){

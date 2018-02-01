@@ -10,34 +10,34 @@ import org.testng.internal.collections.Pair;
 public class CreateBookPage {
 
 	@FindBy(id = "book.title")
-	WebElement bookTitleField;
+	private WebElement bookTitleField;
 
 	@FindBy(id = "book.electronicIsbn")
-	WebElement bookEanField;
+	private WebElement bookEanField;
 
 	@FindBy(id = "subjectId")
-	WebElement bookSubjectField;
+	private WebElement bookSubjectField;
 
 	@FindBy(id = "book.bookType")
-	WebElement bookTypeField;
+	private WebElement bookTypeField;
 
 	@FindBy(id = "book.year")
-	WebElement bookYearField;
+	private WebElement bookYearField;
 
 	@FindBy(id = "book.stream")
-	WebElement bookStreamField;
+	private WebElement bookStreamField;
 
 	@FindBy(id = "book.methode")
-	WebElement bookMethodeField;
+	private WebElement bookMethodeField;
 
 	@FindBy(id = "pdfFile")
-	WebElement uploadPDfBtn;
+	private WebElement uploadPDfBtn;
 
 	@FindBy(id = "coverFile")
-	WebElement UploadCoverBtn;
+	private WebElement UploadCoverBtn;
 
 	@FindBy(how = How.CSS, using = "input.btn.btn-primary")
-	WebElement saveBtn;
+	private WebElement saveBtn;
 
 	public void createBook(String ean) throws InterruptedException {
 
@@ -53,7 +53,6 @@ public class CreateBookPage {
 		uploadFile(UploadCoverBtn, "/Users/dantal/Downloads/PDFs/test2.jpg");
 
 		saveBtn.click();
-
 	}
 
 	public ArrayList<Pair<WebElement, String>> createBookDetailsInputList(String ean) {
@@ -68,14 +67,11 @@ public class CreateBookPage {
 		createBookFormPairs.add(new Pair<>(bookMethodeField, "book methode"));
 
 		return createBookFormPairs;
-
 	}
 
-	public void uploadFile(WebElement element, String filepath) throws InterruptedException {
+	private void uploadFile(WebElement element, String filepath) throws InterruptedException {
 
 		Thread.sleep(1000);
 		element.sendKeys(filepath);
 	}
-
-
 }

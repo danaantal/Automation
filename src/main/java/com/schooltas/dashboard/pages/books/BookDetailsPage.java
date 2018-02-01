@@ -20,12 +20,21 @@ public class BookDetailsPage {
 		this.driver = driver;
 	}
 
-	public void assertBookDetails(String ean) {
+	public void assertBookDetails(String ean, boolean isCreateForm) {
 		CreateBookPage createBookPage = PageFactory.initElements(driver, CreateBookPage.class);
+		EditBookPage editBook = PageFactory.initElements(driver, EditBookPage.class);
 		EntityDetails details = PageFactory.initElements(driver, EntityDetails.class);
+		ArrayList<Pair<WebElement, String>> bookInputList;
+		Map<String, String> bookDetailsMap;
 
-		ArrayList<Pair<WebElement, String>> bookInputList = createBookPage.createBookDetailsInputList(ean);
-		Map<String, String> bookDetailsMap = details.createEntityDetailsMap();
+		if(isCreateForm){
+			bookInputList = createBookPage.createBookDetailsInputList(ean);
+		}
+		else{
+			bookInputList = editBook.createBookDetailsInputList();
+		}
+
+		bookDetailsMap = details.createEntityDetailsMap();
 
 		assertEquals(bookDetailsMap.get("Title"), bookInputList.get(0).second());
 		assertEquals(bookDetailsMap.get("E-ISBN"), bookInputList.get(1).second());

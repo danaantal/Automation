@@ -18,13 +18,13 @@ public class CreateReaderLicensePage {
 	}
 
 	@FindBy(id = "licenseCode.name")
-	public WebElement licenseNameField;
+	private WebElement licenseNameField;
 
 	@FindBy(id = "licenseCode.maxUsers")
-	public WebElement maxUserField;
+	private WebElement maxUserField;
 
 	@FindBy(how = How.CSS, using = "[type=\"submit\"]")
-	public WebElement saveBtn;
+	private WebElement saveBtn;
 
 	public void createReaderLicense(){
 

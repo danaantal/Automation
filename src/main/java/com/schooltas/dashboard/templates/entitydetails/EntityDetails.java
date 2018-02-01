@@ -12,7 +12,7 @@ import org.openqa.selenium.support.How;
 public class EntityDetails {
 
 	@FindBy(how = How.CLASS_NAME, using = "dl-horizontal")
-	WebElement entityDetails;
+	private WebElement entityDetails;
 
 	public Map<String, String> createEntityDetailsMap(){
 

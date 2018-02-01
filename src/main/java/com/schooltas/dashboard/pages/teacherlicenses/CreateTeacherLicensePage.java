@@ -17,13 +17,13 @@ public class CreateTeacherLicensePage {
 	}
 
 	@FindBy(id = "licenseCode.name")
-	WebElement teacherlicenseNameField;
+	private WebElement teacherlicenseNameField;
 
 	@FindBy(id = "licenseCode.maxUsers")
-	WebElement licenseMaxUsersField;
+	private WebElement licenseMaxUsersField;
 
 	@FindBy(how = How.CSS, using = "input.btn.btn-primary")
-	WebElement saveBtn;
+	private WebElement saveBtn;
 
 
 	public void createTeacherLicense(){

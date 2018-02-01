@@ -7,19 +7,19 @@ import org.openqa.selenium.support.How;
 public class AddBookToLicensePage {
 
 	@FindBy(how = How.XPATH, using = "//*[@id='mainContent']/table/tbody/tr[1]/td[1]/form/button")
-	WebElement addBookToLicenseBtn;
+	private WebElement addBookToLicenseBtn;
 
 	@FindBy(id = "searchInput")
-	WebElement searchBookField;
+	private WebElement searchBookField;
 
 	@FindBy(id = "searchBtn")
-	WebElement searchBtn;
+	private WebElement searchBtn;
 
 	@FindBy(how = How.CSS, using = "a.btn.btn-primary.pull-right")
-	WebElement nextBtn;
+	private WebElement nextBtn;
 
 	@FindBy(how = How.CSS, using = "div.alert.alert-success")
-	WebElement alertMessage;
+	private WebElement alertMessage;
 
 	public void addBookToLicense(){
 

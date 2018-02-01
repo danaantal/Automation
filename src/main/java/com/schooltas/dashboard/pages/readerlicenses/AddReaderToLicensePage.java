@@ -14,16 +14,16 @@ public class AddReaderToLicensePage {
 	}
 
 	@FindBy(how = How.XPATH, using = "(//button[@type='submit' and contains(.,'Add')])[1]" )
-	public WebElement addReaderToLicenseBtn;
+	private WebElement addReaderToLicenseBtn;
 
 	@FindBy(id = "searchInput")
-	public WebElement searchReaderField;
+	private WebElement searchReaderField;
 
 	@FindBy(id = "searchBtn")
-	public WebElement searchReaderBtn;
+	private WebElement searchReaderBtn;
 
 	@FindBy(how = How.CSS, using = ".btn-primary.pull-right")
-	public WebElement nextStepBtn;
+	private WebElement nextStepBtn;
 
 	public void addReaderToLicense(){
 		searchReaderField.sendKeys("Reader");

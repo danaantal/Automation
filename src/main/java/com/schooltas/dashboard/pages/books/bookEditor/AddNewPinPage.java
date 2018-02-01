@@ -16,28 +16,26 @@ public class AddNewPinPage {
 	public WebElement textInPopupBtn;
 
 	@FindBy(id = "editTextPopupHeading")
-	WebElement textInPopupPinTitleField;
+	private WebElement textInPopupPinTitleField;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"wmd-button-bar\"]/span[1]/svg/path")
-	WebElement boldTextBtn;
+	private WebElement boldTextBtn;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"wmd-button-bar\"]/span[2]/svg")
-	WebElement italicTextBtn;
+	private WebElement italicTextBtn;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"wmd-button-bar\"]/span[3]/svg/g/path")
-	WebElement bulletsTextBtn;
+	private WebElement bulletsTextBtn;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"wmd-button-bar\"]/span[4]/svg")
-	WebElement numberingTextBtn;
+	private WebElement numberingTextBtn;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"wmd-button-bar\"]/span[5]/svg")
-	WebElement hyperlinkTextBtn;
+	private WebElement hyperlinkTextBtn;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"painting-controls\"]/div/section/fieldset/button[1]")
-	WebElement saveBtn;
+	private WebElement saveBtn;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"painting-controls\"]/div/section/fieldset/button[3]")
-	WebElement cancelBtn;
-
-
+	private WebElement cancelBtn;
 }

@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import com.schooltas.dashboard.pages.loginPage.LoginPage;
 import com.schooltas.dashboard.tests.BaseClass;
-import com.schooltas.dashboard.utils.ILoginConstants;
+import com.schooltas.dashboard.utils.constants.ILoginConstants;
 
 public class ValidLoginTests extends BaseClass implements ILoginConstants{
 

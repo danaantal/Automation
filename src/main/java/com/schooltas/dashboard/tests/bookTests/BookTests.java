@@ -23,7 +23,6 @@ public class BookTests extends BaseClass {
 		leftMenu.clickMenuItem("Create book");
 		createBook.createBook(ean);
 		bookDetails.assertBookDetails(ean, true);
-
 	}
 
 	@Test
@@ -32,13 +31,13 @@ public class BookTests extends BaseClass {
 		BooksOverviewTemplate overviewTemplate = PageFactory.initElements(driver, BooksOverviewTemplate.class);
 		EditBookPage editBook = PageFactory.initElements(driver, EditBookPage.class);
 		BookDetailsPage bookDetails = PageFactory.initElements(driver, BookDetailsPage.class);
+		String ean = "3711413071302";
 
 		dashboardMenu.clickMainMenuOption("Books");
-		overviewTemplate.searchForEntityByEan("3711413071302");
+		overviewTemplate.searchForEntityByEan(ean);
 		overviewTemplate.click("Details");
 		leftMenu.clickMenuItem("Edit book");
 		editBook.editBook();
-		//bookDetails.assertBookDetails(ean, false);
-
+		bookDetails.assertBookDetails(ean, false);
 	}
 }

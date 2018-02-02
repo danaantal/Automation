@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.utils;
+package com.schooltas.dashboard.utils.constants;
 
 public interface ILoginConstants {
 

@@ -10,7 +10,7 @@ import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
 import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
 import com.schooltas.dashboard.utils.ActionUtils;
 import com.schooltas.dashboard.utils.BrowserFactory;
-import com.schooltas.dashboard.utils.ILoginConstants;
+import com.schooltas.dashboard.utils.constants.ILoginConstants;
 
 public abstract class BaseClass implements ILoginConstants{
 

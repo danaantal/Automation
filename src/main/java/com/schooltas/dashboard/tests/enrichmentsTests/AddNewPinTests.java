@@ -8,7 +8,7 @@ import com.schooltas.dashboard.pages.books.bookEditor.EditBookViewerPage;
 import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
 import com.schooltas.dashboard.templates.overviewpage.BooksOverviewTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
-import com.schooltas.dashboard.utils.ILoginConstants;
+import com.schooltas.dashboard.utils.constants.ILoginConstants;
 
 public class AddNewPinTests extends BaseClass implements ILoginConstants {
 

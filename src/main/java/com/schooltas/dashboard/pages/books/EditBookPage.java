@@ -9,8 +9,9 @@ import org.openqa.selenium.support.How;
 import org.testng.internal.collections.Pair;
 
 import com.google.common.collect.ImmutableList;
+import com.schooltas.dashboard.utils.constants.IEditBookConstants;
 
-public class EditBookPage {
+public class EditBookPage implements IEditBookConstants{
 
 	@FindBy(id = "book.title")
 	private WebElement bookTitleField;
@@ -38,7 +39,7 @@ public class EditBookPage {
 
 	public void editBook(){
 
-		clearFieldsButEanField(createImmutableList());
+		clearTextInputs(createImmutableList());
 		ArrayList<Pair<WebElement, String>> bookDetails = createBookDetailsInputList();
 
 		bookDetails.forEach((element) -> {
@@ -50,13 +51,13 @@ public class EditBookPage {
 	public ArrayList<Pair<WebElement, String>> createBookDetailsInputList() {
 		ArrayList<Pair<WebElement, String>> createBookFormPairs = new ArrayList<>();
 
-		createBookFormPairs.add(new Pair<>(bookTitleField, "Edit book title automate"));
-		//createBookFormPairs.add(new Pair<>(bookEanField, ean));
-		createBookFormPairs.add(new Pair<>(bookSubjectField, "#Test"));
-		createBookFormPairs.add(new Pair<>(bookTypeField, "Workbook"));
-		createBookFormPairs.add(new Pair<>(bookYearField, "1"));
-		createBookFormPairs.add(new Pair<>(bookStreamField, "edit book stream"));
-		createBookFormPairs.add(new Pair<>(bookMethodeField, "edit book methode"));
+		createBookFormPairs.add(new Pair<>(bookTitleField, BOOK_TITLE));
+		createBookFormPairs.add(new Pair<>(bookEanField, BOOK_EAN));
+		createBookFormPairs.add(new Pair<>(bookSubjectField, BOOK_SUBJECT));
+		createBookFormPairs.add(new Pair<>(bookTypeField, BOOK_TYPE));
+		createBookFormPairs.add(new Pair<>(bookYearField,  BOOK_YEAR));
+		createBookFormPairs.add(new Pair<>(bookStreamField, BOOK_STREAM));
+		createBookFormPairs.add(new Pair<>(bookMethodeField, BOOK_METHOD));
 
 		return createBookFormPairs;
 	}
@@ -75,11 +76,11 @@ public class EditBookPage {
 		return webelementList;
 	}
 
-	private void clearFieldsButEanField(List<WebElement> webelementList){
+	private void clearTextInputs(List<WebElement> webelementList){
 
 		webelementList.stream()
 		.filter(element ->
-		!element.equals(bookEanField) && !element.equals(bookTypeField) && !element.equals(bookSubjectField))
+		/*!element.equals(bookEanField) && */!element.equals(bookTypeField) && !element.equals(bookSubjectField))
 		.forEach(WebElement::clear);
 	}
 }

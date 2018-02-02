@@ -7,7 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.testng.internal.collections.Pair;
 
-public class CreateBookPage {
+import com.schooltas.dashboard.utils.constants.ICreateBookConstants;
+
+public class CreateBookPage implements ICreateBookConstants{
 
 	@FindBy(id = "book.title")
 	private WebElement bookTitleField;
@@ -49,8 +51,8 @@ public class CreateBookPage {
 			element.first().sendKeys(element.second());
 		});
 
-		uploadFile(uploadPDfBtn, "/Users/dantal/Downloads/PDFs/E-book.pdf");
-		uploadFile(UploadCoverBtn, "/Users/dantal/Downloads/PDFs/test2.jpg");
+		uploadFile(uploadPDfBtn, BOOK_PDF_PATH);
+		uploadFile(UploadCoverBtn, BOOK_COVER_PATH);
 
 		saveBtn.click();
 	}
@@ -58,13 +60,13 @@ public class CreateBookPage {
 	public ArrayList<Pair<WebElement, String>> createBookDetailsInputList(String ean) {
 		ArrayList<Pair<WebElement, String>> createBookFormPairs = new ArrayList<>();
 
-		createBookFormPairs.add(new Pair<>(bookTitleField, "book title automate"));
+		createBookFormPairs.add(new Pair<>(bookTitleField, BOOK_TITLE));
 		createBookFormPairs.add(new Pair<>(bookEanField, ean));
-		createBookFormPairs.add(new Pair<>(bookSubjectField, "#Test"));
-		createBookFormPairs.add(new Pair<>(bookTypeField, "Coursebook"));
-		createBookFormPairs.add(new Pair<>(bookYearField, "1990"));
-		createBookFormPairs.add(new Pair<>(bookStreamField, "book stream"));
-		createBookFormPairs.add(new Pair<>(bookMethodeField, "book methode"));
+		createBookFormPairs.add(new Pair<>(bookSubjectField, BOOK_SUBJECT));
+		createBookFormPairs.add(new Pair<>(bookTypeField, BOOK_TYPE));
+		createBookFormPairs.add(new Pair<>(bookYearField, BOOK_YEAR));
+		createBookFormPairs.add(new Pair<>(bookStreamField, BOOK_STREAM));
+		createBookFormPairs.add(new Pair<>(bookMethodeField, BOOK_METHOD));
 
 		return createBookFormPairs;
 	}

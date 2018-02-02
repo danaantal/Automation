@@ -26,7 +26,7 @@ public class BookLicenseDetailsPage {
 		EntityDetails details = PageFactory.initElements(driver, EntityDetails.class);
 
 		ArrayList<Pair<WebElement, String>> licenseInputList = createLicense.createLicenseDetailsInputList();
-		Map<String, String> licenseDetailsMap = details.createEntityDetailsMap();
+		Map<String, String> licenseDetailsMap = details.createMapForDetailsPage();
 
 		assertEquals(licenseDetailsMap.get("License name"), licenseInputList.get(0).second());
 		assertEquals(licenseDetailsMap.get("Maximum users"), licenseInputList.get(1).second());

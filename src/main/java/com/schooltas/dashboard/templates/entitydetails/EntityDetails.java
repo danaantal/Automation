@@ -14,7 +14,7 @@ public class EntityDetails {
 	@FindBy(how = How.CLASS_NAME, using = "dl-horizontal")
 	private WebElement entityDetails;
 
-	public Map<String, String> createEntityDetailsMap(){
+	public Map<String, String> createMapForDetailsPage(){
 
 		Map<String, String> detailsMap = new HashMap<>();
 

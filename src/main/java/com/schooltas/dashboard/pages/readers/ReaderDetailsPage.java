@@ -18,14 +18,14 @@ public class ReaderDetailsPage {
 	public ReaderDetailsPage(WebDriver driver){
 		this.driver = driver;
 	}
-	
+
 	public void assertReaderDetails(){
 		CreateReaderPage createReaderPage = PageFactory.initElements(driver, CreateReaderPage.class);
 		EntityDetails details = PageFactory.initElements(driver, EntityDetails.class);
-		
+
 		ArrayList<Pair<WebElement,String>> readerInputList = createReaderPage.createReaderDetailsInputList();
-		Map<String,String> readerDetailsMap = details.createEntityDetailsMap();
-		
+		Map<String,String> readerDetailsMap = details.createMapForDetailsPage();
+
 		assertEquals(readerDetailsMap.get("Title"), readerInputList.get(0).second());
 		assertEquals(readerDetailsMap.get("Course"), readerInputList.get(1).second());
 	}

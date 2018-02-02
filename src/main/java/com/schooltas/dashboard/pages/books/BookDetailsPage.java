@@ -34,7 +34,7 @@ public class BookDetailsPage {
 			bookInputList = editBook.createBookDetailsInputList();
 		}
 
-		bookDetailsMap = details.createEntityDetailsMap();
+		bookDetailsMap = details.createMapForDetailsPage();
 
 		assertEquals(bookDetailsMap.get("Title"), bookInputList.get(0).second());
 		assertEquals(bookDetailsMap.get("E-ISBN"), bookInputList.get(1).second());

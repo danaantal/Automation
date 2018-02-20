@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.pages.booklicenses;
+package com.schooltas.dashboard.pages.bookLicenses;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.internal.collections.Pair;
 
-import com.schooltas.dashboard.templates.entitydetails.EntityDetails;
+import com.schooltas.dashboard.templates.entityDetails.EntityDetails;
 
 public class BookLicenseDetailsPage {
 

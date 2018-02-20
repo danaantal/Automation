@@ -3,8 +3,8 @@ package com.schooltas.dashboard.tests.licenseTests;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-import com.schooltas.dashboard.pages.readerlicenses.CreateReaderLicensePage;
-import com.schooltas.dashboard.pages.readerlicenses.ReaderLicenseDetailsPage;
+import com.schooltas.dashboard.pages.readerLicenses.CreateReaderLicensePage;
+import com.schooltas.dashboard.pages.readerLicenses.ReaderLicenseDetailsPage;
 import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
 import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
 import com.schooltas.dashboard.tests.BaseClass;

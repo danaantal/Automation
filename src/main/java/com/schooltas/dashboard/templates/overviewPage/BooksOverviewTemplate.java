@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.templates.overviewpage;
+package com.schooltas.dashboard.templates.overviewPage;
 
 
 import java.util.List;

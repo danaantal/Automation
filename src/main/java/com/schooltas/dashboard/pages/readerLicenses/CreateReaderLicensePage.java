@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.pages.readerlicenses;
+package com.schooltas.dashboard.pages.readerLicenses;
 
 import java.util.ArrayList;
 

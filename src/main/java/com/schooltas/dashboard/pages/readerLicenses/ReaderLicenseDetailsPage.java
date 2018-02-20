@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.pages.teacherlicenses;
+package com.schooltas.dashboard.pages.readerLicenses;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -11,18 +11,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.internal.collections.Pair;
 
-import com.schooltas.dashboard.templates.entitydetails.EntityDetails;
+import com.schooltas.dashboard.templates.entityDetails.EntityDetails;
 
-public class TeacherLicenseDetailsPage {
+public class ReaderLicenseDetailsPage {
+
 	private final WebDriver driver;
 
-	public TeacherLicenseDetailsPage(WebDriver driver){
+	public ReaderLicenseDetailsPage(WebDriver driver){
 		this.driver = driver;
 	}
 
 
 	public void assertReaderLicenseDetails() {
-		CreateTeacherLicensePage createLicense = PageFactory.initElements(driver, CreateTeacherLicensePage.class);
+		CreateReaderLicensePage createLicense = PageFactory.initElements(driver, CreateReaderLicensePage.class);
 		EntityDetails details = PageFactory.initElements(driver, EntityDetails.class);
 
 		ArrayList<Pair<WebElement, String>> licenseInputList = createLicense.createLicenseDetailsInputList();

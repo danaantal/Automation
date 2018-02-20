@@ -1,7 +1,9 @@
 package com.schooltas.dashboard.pages.books.bookEditor;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,10 +22,13 @@ public class EditBookViewerPage {
 	}
 
 	@FindBy(id = "book-settings-button")
-	WebElement bookPageSettingsBtn;
+	private WebElement bookPageSettingsBtn;
+
+	@FindBy(how = How.CSS, using = "div.context-menu.popup.show")
+	private WebElement addPinsMainMenu;
 
 	@FindBy(how = How.CSS, using = "button[data-type='enrichment']")
-	public WebElement addNewPinBtn;
+	private WebElement addNewPinBtn;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"editor-page\"]/div[16]/div[1]/button[2]")
 	private WebElement addNewAnswerBtn;
@@ -34,36 +39,20 @@ public class EditBookViewerPage {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"editor-page\"]/div[16]/div[1]/button[4]")
 	private WebElement addNewImageHotspotsBtn;
 
-	@FindBy(how = How.CSS, using = ".prikker-container.show-markers")
-	public WebElement pageOverlay;
-
-	@FindBy(css = ".alert-popup.alert-text")
-	// @FindBy(css=".alert.show")
-	public WebElement loaderPercentage;
-
-	@FindBy(id = "booktitle-popup")
-	private WebElement bookTitlePopup;
+	@FindBy(how = How.CSS, using = "div.prikker-container.show-markers")
+	private List<WebElement> pageOverlay;
+	//
+	//	@FindBy(css = ".alert-popup.alert-text")
+	//	// @FindBy(css=".alert.show")
+	//	public WebElement loaderPercentage;
+	//
+	//	@FindBy(id = "booktitle-popup")
+	//	private WebElement bookTitlePopup;
 
 	public void WaitForText(WebElement element, String text) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.textToBePresentInElement(element, text));
 	}
-
-
-	// public void switchwindow() {
-	// try {
-	//
-	// // String winHandleBefore = driver.getWindowHandle();
-	//
-	// for (String winHandle : driver.getWindowHandles()) {
-	// driver.switchTo().window(winHandle);
-	// }
-	// } catch (Exception e) {
-	// // return Constants.KEYWORD_FAIL+ "Unable to Switch Window" +
-	// // e.getMessage();
-	// }
-	// // return Constants.KEYWORD_PASS;
-	// }
 
 	public void WaitForElement(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -94,5 +83,24 @@ public class EditBookViewerPage {
 			System.out.println("Element " + element + " was not clickable " + e.getStackTrace());
 		}
 
+	}
+
+	public void rightClickOnThePage() throws InterruptedException{
+		Thread.sleep(5000);
+		rightClick(pageOverlay.get(0));
+	}
+
+	public void getAddPinMenuButtons(){
+
+		List<WebElement> mainMenuChildren = addPinsMainMenu.findElements(By.xpath(".//*"));
+		List<WebElement> addPinButtons = null;
+
+		mainMenuChildren.forEach(element -> {
+			if(element.getTagName().equals("button"))
+			{
+				addPinButtons.add(element);
+			}
+
+		});
 	}
 }

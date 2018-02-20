@@ -3,9 +3,9 @@ package com.schooltas.dashboard.tests.licenseTests;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-import com.schooltas.dashboard.pages.booklicenses.BookLicenseDetailsPage;
-import com.schooltas.dashboard.pages.booklicenses.BookLicensesOverviewPage;
-import com.schooltas.dashboard.pages.booklicenses.CreateBookLicensePage;
+import com.schooltas.dashboard.pages.bookLicenses.BookLicenseDetailsPage;
+import com.schooltas.dashboard.pages.bookLicenses.BookLicensesOverviewPage;
+import com.schooltas.dashboard.pages.bookLicenses.CreateBookLicensePage;
 import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
 import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
 import com.schooltas.dashboard.tests.BaseClass;

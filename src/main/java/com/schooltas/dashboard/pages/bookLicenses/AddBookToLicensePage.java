@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.pages.booklicenses;
+package com.schooltas.dashboard.pages.bookLicenses;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

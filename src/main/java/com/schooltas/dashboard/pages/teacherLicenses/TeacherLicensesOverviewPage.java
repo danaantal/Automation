@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.pages.teacherlicenses;
+package com.schooltas.dashboard.pages.teacherLicenses;
 
 public class TeacherLicensesOverviewPage {
 

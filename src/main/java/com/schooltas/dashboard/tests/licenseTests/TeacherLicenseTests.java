@@ -3,8 +3,8 @@ package com.schooltas.dashboard.tests.licenseTests;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-import com.schooltas.dashboard.pages.teacherlicenses.CreateTeacherLicensePage;
-import com.schooltas.dashboard.pages.teacherlicenses.TeacherLicenseDetailsPage;
+import com.schooltas.dashboard.pages.teacherLicenses.CreateTeacherLicensePage;
+import com.schooltas.dashboard.pages.teacherLicenses.TeacherLicenseDetailsPage;
 import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
 import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
 import com.schooltas.dashboard.tests.BaseClass;

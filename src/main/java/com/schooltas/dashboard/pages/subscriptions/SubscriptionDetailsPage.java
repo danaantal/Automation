@@ -1,13 +1,6 @@
 package com.schooltas.dashboard.pages.subscriptions;
 
-import org.openqa.selenium.WebDriver;
-
 public class SubscriptionDetailsPage {
-
-	private final WebDriver driver;
-	public SubscriptionDetailsPage(WebDriver driver){
-		this.driver = driver;
-	}
 
 	//	public void assertSubscriptionDetails()
 	//	{

@@ -26,8 +26,10 @@ public class BookEditorTests extends BaseClass{
 		bookViewerPage.rightClickOnThePage();
 		bookViewerPage.clickAddNewEnrichmentButton("Add new pin");
 		textInPopupPage.clickTextInPopupEnrichmentButton("Text in popup");
-		textInPopupPage.fillEnrichmentDetailsFields();
+		textInPopupPage.fillEnrichmentDetailsFields("Test title", "Body text test");
+		textInPopupPage.verifyTitleAndText("Test title\nBody text test");
 		textInPopupPage.deleteEnrichment();
+
 
 		System.out.println("text in popup deleted!");
 	}

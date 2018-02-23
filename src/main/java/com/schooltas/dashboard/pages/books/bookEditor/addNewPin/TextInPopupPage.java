@@ -1,6 +1,8 @@
 package com.schooltas.dashboard.pages.books.bookEditor.addNewPin;
 
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +34,11 @@ public class TextInPopupPage {
 	@FindBy(how = How.CSS, using = "button.cancel-button.button.grey")
 	private WebElement cancelBtn;
 
-	@FindBy(how = How.CSS, using = "div.prikker")
-	private WebElement enrichmentPin;
-
 	@FindBy(how = How.CSS, using = "div.popover-canvas.inside-scroll")
 	private WebElement viewPinCanvas;
+
+	@FindBy(how = How.CSS, using  = "button.white.button.button-top-right")
+	private WebElement doneCanvas;
 
 	@FindBy(how = How.CSS, using = "button.delete-button.button.red")
 	private WebElement deleteEnrichmentButton;
@@ -56,7 +58,39 @@ public class TextInPopupPage {
 		bookEditor.clickAddNewEnrichmentButton(addNewPinOptions, buttonName);
 	}
 
+	public void fillEnrichmentDetailsFields(String title, String body){
+
+		ActionUtils.waitForElement(textInPopupPinTitleField);
+		textInPopupPinTitleField.sendKeys(title);
+		bodyTextArea.sendKeys(body);
+		saveBtn.click();
+	}
+
+	public void deleteEnrichment() throws InterruptedException{
+
+		ActionUtils.waitForElementInvisible(loadingIcon);
+		List<WebElement> pinsOnThePageList = getPinsOnThePage();
+		WebElement firstVisiblePin = pinsOnThePageList.get(1);
+
+		ActionUtils.rightClick(firstVisiblePin);
+		deleteAction();
+		ActionUtils.waitForElementInvisible(pinsOnThePageList.get(1));
+	}
+
+	public void verifyTitleAndText(String text){
+
+		ActionUtils.waitForElementInvisible(loadingIcon);
+		List<WebElement> pinsOnThePageList = getPinsOnThePage();
+		WebElement firstVisiblePin = pinsOnThePageList.get(1);
+
+		firstVisiblePin.click();
+		ActionUtils.waitForElement(viewPinCanvas);
+		assertEquals(viewPinCanvas.getText(), text);
+		ActionUtils.pressEscKey();
+	}
+
 	private ArrayList<WebElement> getPinsOnThePage(){
+
 		WebElement pageOverlay = pinOverlay.get(1);
 
 		List<WebElement> pinsList = pageOverlay.findElements(By.xpath(".//*"));
@@ -76,33 +110,9 @@ public class TextInPopupPage {
 		return pinsOnThePageList;
 	}
 
-	public void fillEnrichmentDetailsFields(){
-
-		ActionUtils.waitForElement(textInPopupPinTitleField);
-		textInPopupPinTitleField.sendKeys("Test title");
-		bodyTextArea.sendKeys("Body text test");
-		saveBtn.click();
-	}
-
-	public void deleteEnrichment() throws InterruptedException{
-
-		ActionUtils.waitForElementInvisible(loadingIcon);
-		List<WebElement> pinsOnThePageList = getPinsOnThePage();
-
-		ActionUtils.rightClick(pinsOnThePageList.get(1));
-		deleteAction();
-		ActionUtils.waitForElementInvisible(pinsOnThePageList.get(1));
-	}
-
 	private void deleteAction(){
 		ActionUtils.waitForElement(deleteEnrichmentButton);
-
 		deleteEnrichmentButton.click();
 		confirmDeleteButton.click();
-	}
-
-	public void verifyTitleAndText(String text){
-		enrichmentPin.click();
-		//assertEquals(viewPinCanvas.getText(), text);
 	}
 }

@@ -2,6 +2,7 @@ package com.schooltas.dashboard.utils;
 
 import java.util.NoSuchElementException;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -13,6 +14,11 @@ import com.schooltas.dashboard.pages.loginPage.LoginPage;
 import com.schooltas.dashboard.tests.BaseClass;
 
 public class ActionUtils extends BaseClass {
+
+	public static void pressEscKey(){
+		Actions action = new Actions(driver);
+		action.sendKeys(Keys.ESCAPE).build().perform();
+	}
 
 	public static void waitForElement(WebElement element){
 		WebDriverWait wait = new WebDriverWait(driver, 5);

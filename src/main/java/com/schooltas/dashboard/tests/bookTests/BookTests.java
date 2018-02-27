@@ -8,7 +8,7 @@ import com.schooltas.dashboard.pages.books.CreateBookPage;
 import com.schooltas.dashboard.pages.books.EditBookPage;
 import com.schooltas.dashboard.templates.overviewPage.BooksOverviewTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
-import com.schooltas.dashboard.utils.ActionUtils;
+import com.schooltas.dashboard.utils.utils.ActionUtils;
 
 public class BookTests extends BaseClass {
 

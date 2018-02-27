@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.utils;
+package com.schooltas.dashboard.utils.utils;
 
 import java.util.NoSuchElementException;
 
@@ -21,13 +21,18 @@ public class ActionUtils extends BaseClass {
 	}
 
 	public static void waitForElement(WebElement element){
-		WebDriverWait wait = new WebDriverWait(driver, 5);
+		WebDriverWait wait = new WebDriverWait(driver, 7);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public static void waitForElementInvisible(WebElement element){
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.invisibilityOf(element));
+	}
+
+	public static void waitForElementToBeClickable(WebElement element){
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
 	public static void rightClick(WebElement element) {

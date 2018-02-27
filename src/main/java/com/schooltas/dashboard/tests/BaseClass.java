@@ -8,9 +8,9 @@ import org.testng.annotations.BeforeTest;
 import com.schooltas.dashboard.pages.homePage.HomePage;
 import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
 import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
-import com.schooltas.dashboard.utils.ActionUtils;
-import com.schooltas.dashboard.utils.BrowserFactory;
 import com.schooltas.dashboard.utils.constants.ILoginConstants;
+import com.schooltas.dashboard.utils.utils.ActionUtils;
+import com.schooltas.dashboard.utils.utils.BrowserFactory;
 
 public abstract class BaseClass implements ILoginConstants{
 

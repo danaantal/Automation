@@ -24,6 +24,7 @@ public class BookDetailsPage {
 		CreateBookPage createBookPage = PageFactory.initElements(driver, CreateBookPage.class);
 		EditBookPage editBook = PageFactory.initElements(driver, EditBookPage.class);
 		EntityDetails details = PageFactory.initElements(driver, EntityDetails.class);
+
 		ArrayList<Pair<WebElement, String>> bookInputList;
 		Map<String, String> bookDetailsMap;
 

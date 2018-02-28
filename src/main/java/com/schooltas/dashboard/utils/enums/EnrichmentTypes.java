@@ -12,8 +12,8 @@ public enum EnrichmentTypes {
 	InternalLinkMarker("InternalLinkMarker", null),
 	HotspotImage("HotspotImage", "div#painting-viewer.open");
 
-	String type;
-	String selector;
+	private String type;
+	private String selector;
 
 	EnrichmentTypes(String type, String selector){
 		this.type = type;

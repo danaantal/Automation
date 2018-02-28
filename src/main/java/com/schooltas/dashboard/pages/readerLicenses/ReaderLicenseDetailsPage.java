@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.internal.collections.Pair;
 
-import com.schooltas.dashboard.templates.entityDetails.EntityDetails;
+import com.schooltas.dashboard.templates.EntityDetails;
 
 public class ReaderLicenseDetailsPage {
 

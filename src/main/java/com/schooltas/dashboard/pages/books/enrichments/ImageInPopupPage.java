@@ -1,26 +1,16 @@
-package com.schooltas.dashboard.pages.books.bookEditor.addNewPin;
+package com.schooltas.dashboard.pages.books.enrichments;
 
 import static org.testng.Assert.assertEquals;
 
 import java.util.List;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 
-import com.schooltas.dashboard.pages.books.enrichments.Enrichment;
-import com.schooltas.dashboard.templates.bookEditor.BookEditorTemplate;
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 
 public class ImageInPopupPage extends Enrichment{
-
-	private final WebDriver driver;
-
-	public ImageInPopupPage(WebDriver driver){
-		this.driver = driver;
-	}
 
 	@FindBy(how = How.CSS, using = "input.st-textinput.full")
 	private List<WebElement> imagePopupTitleField;
@@ -44,8 +34,6 @@ public class ImageInPopupPage extends Enrichment{
 	}
 
 	public void assertEnrichmentDetails(String text) {
-
-		BookEditorTemplate bookEditorTemplate = PageFactory.initElements(driver, BookEditorTemplate.class);
 		ActionUtils.waitForElement(bookEditorTemplate.getPopupHeader());
 		assertEquals(bookEditorTemplate.getPopupHeader().getText(), text);
 	}

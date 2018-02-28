@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.pages.loginPage;
+package com.schooltas.dashboard.pages.login;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

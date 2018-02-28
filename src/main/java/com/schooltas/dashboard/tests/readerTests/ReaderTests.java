@@ -5,8 +5,8 @@ import org.testng.annotations.Test;
 
 import com.schooltas.dashboard.pages.readers.CreateReaderPage;
 import com.schooltas.dashboard.pages.readers.ReaderDetailsPage;
-import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
-import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
+import com.schooltas.dashboard.templates.DashboardMenuTemplate;
+import com.schooltas.dashboard.templates.LeftMenuTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
 
 public class ReaderTests extends BaseClass {

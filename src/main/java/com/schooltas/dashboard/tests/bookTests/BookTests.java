@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import com.schooltas.dashboard.pages.books.BookDetailsPage;
 import com.schooltas.dashboard.pages.books.CreateBookPage;
 import com.schooltas.dashboard.pages.books.EditBookPage;
-import com.schooltas.dashboard.templates.overviewPage.BooksOverviewTemplate;
+import com.schooltas.dashboard.templates.BooksOverviewTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 

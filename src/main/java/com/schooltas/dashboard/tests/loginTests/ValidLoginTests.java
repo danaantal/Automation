@@ -3,7 +3,7 @@ package com.schooltas.dashboard.tests.loginTests;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-import com.schooltas.dashboard.pages.loginPage.LoginPage;
+import com.schooltas.dashboard.pages.login.LoginPage;
 import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.constants.ILoginConstants;
 

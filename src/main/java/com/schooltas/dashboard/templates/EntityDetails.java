@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.templates.entityDetails;
+package com.schooltas.dashboard.templates;
 
 import java.util.HashMap;
 import java.util.List;

@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 import com.schooltas.dashboard.pages.bookLicenses.BookLicenseDetailsPage;
 import com.schooltas.dashboard.pages.bookLicenses.BookLicensesOverviewPage;
 import com.schooltas.dashboard.pages.bookLicenses.CreateBookLicensePage;
-import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
-import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
+import com.schooltas.dashboard.templates.DashboardMenuTemplate;
+import com.schooltas.dashboard.templates.LeftMenuTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
 
 public class LicenseTests extends BaseClass{

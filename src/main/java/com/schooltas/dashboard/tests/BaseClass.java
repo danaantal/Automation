@@ -5,9 +5,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import com.schooltas.dashboard.pages.homePage.HomePage;
-import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
-import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
+import com.schooltas.dashboard.pages.home.HomePage;
+import com.schooltas.dashboard.templates.DashboardMenuTemplate;
+import com.schooltas.dashboard.templates.LeftMenuTemplate;
 import com.schooltas.dashboard.utils.constants.ILoginConstants;
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 import com.schooltas.dashboard.utils.utils.BrowserFactory;

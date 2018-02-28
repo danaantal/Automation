@@ -1,23 +1,13 @@
-package com.schooltas.dashboard.pages.books.bookEditor.addNewPin;
+package com.schooltas.dashboard.pages.books.enrichments;
 
 import static org.testng.Assert.assertEquals;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import com.schooltas.dashboard.pages.books.enrichments.Enrichment;
-import com.schooltas.dashboard.templates.bookEditor.BookEditorTemplate;
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 
 public class TextInPopupPage extends Enrichment {
-
-	private final WebDriver driver;
-
-	public TextInPopupPage(WebDriver driver){
-		this.driver = driver;
-	}
 
 	@FindBy(id = "editTextPopupHeading")
 	private WebElement textInPopupPinTitleField;
@@ -36,8 +26,6 @@ public class TextInPopupPage extends Enrichment {
 	}
 
 	public void assertEnrichmentDetails(String text) {
-
-		BookEditorTemplate bookEditorTemplate = PageFactory.initElements(driver, BookEditorTemplate.class);
 		ActionUtils.waitForElement(bookEditorTemplate.getViewPinCanvas());
 		assertEquals(bookEditorTemplate.getViewPinCanvas().getText(), text);
 	}

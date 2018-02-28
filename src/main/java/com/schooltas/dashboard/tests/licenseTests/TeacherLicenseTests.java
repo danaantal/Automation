@@ -5,8 +5,8 @@ import org.testng.annotations.Test;
 
 import com.schooltas.dashboard.pages.teacherLicenses.CreateTeacherLicensePage;
 import com.schooltas.dashboard.pages.teacherLicenses.TeacherLicenseDetailsPage;
-import com.schooltas.dashboard.templates.menus.DashboardMenuTemplate;
-import com.schooltas.dashboard.templates.menus.LeftMenuTemplate;
+import com.schooltas.dashboard.templates.DashboardMenuTemplate;
+import com.schooltas.dashboard.templates.LeftMenuTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
 
 public class TeacherLicenseTests extends BaseClass{

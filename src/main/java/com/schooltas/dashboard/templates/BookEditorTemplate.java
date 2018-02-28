@@ -1,4 +1,4 @@
-package com.schooltas.dashboard.templates.bookEditor;
+package com.schooltas.dashboard.templates;
 
 import java.util.ArrayList;
 import java.util.List;

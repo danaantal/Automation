@@ -12,37 +12,26 @@ import org.testng.internal.collections.Pair;
 
 import com.schooltas.dashboard.templates.EntityDetails;
 
-public class BookDetailsPage {
+public class BookDetailsPage{
 
-	private final WebDriver driver;
+    private final WebDriver driver;
 
-	public BookDetailsPage(WebDriver driver){
-		this.driver = driver;
-	}
+    public BookDetailsPage(WebDriver driver){
+        this.driver = driver;
+    }
 
-	public void assertBookDetails(String ean, boolean isCreateForm) {
-		CreateBookPage createBookPage = PageFactory.initElements(driver, CreateBookPage.class);
-		EditBookPage editBook = PageFactory.initElements(driver, EditBookPage.class);
-		EntityDetails details = PageFactory.initElements(driver, EntityDetails.class);
+    public void assertBookDetails(ArrayList<Pair<WebElement, String>> bookInput) {
 
-		ArrayList<Pair<WebElement, String>> bookInputList;
-		Map<String, String> bookDetailsMap;
+        EntityDetails details = PageFactory.initElements(driver, EntityDetails.class);
 
-		if(isCreateForm){
-			bookInputList = createBookPage.createBookDetailsInputList(ean);
-		}
-		else{
-			bookInputList = editBook.createBookDetailsInputList();
-		}
+        Map<String, String> bookDetails = details.createMapForDetailsPage();
 
-		bookDetailsMap = details.createMapForDetailsPage();
-
-		assertEquals(bookDetailsMap.get("Title"), bookInputList.get(0).second());
-		assertEquals(bookDetailsMap.get("E-ISBN"), bookInputList.get(1).second());
-		assertEquals(bookDetailsMap.get("Course"), bookInputList.get(2).second());
-		assertEquals(bookDetailsMap.get("Book type"), bookInputList.get(3).second());
-		assertEquals(bookDetailsMap.get("Year"), bookInputList.get(4).second());
-		assertEquals(bookDetailsMap.get("Stream"), bookInputList.get(5).second());
-		assertEquals(bookDetailsMap.get("Series"), bookInputList.get(6).second());
-	}
+        assertEquals(bookDetails.get("Title"), bookInput.get(0).second());
+        assertEquals(bookDetails.get("E-ISBN"), bookInput.get(1).second());
+        assertEquals(bookDetails.get("Course"), bookInput.get(2).second());
+        assertEquals(bookDetails.get("Book type"), bookInput.get(3).second());
+        assertEquals(bookDetails.get("Year"), bookInput.get(4).second());
+        assertEquals(bookDetails.get("Stream"), bookInput.get(5).second());
+        assertEquals(bookDetails.get("Series"), bookInput.get(6).second());
+    }
 }

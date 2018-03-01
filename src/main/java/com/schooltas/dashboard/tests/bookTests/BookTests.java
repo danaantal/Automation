@@ -1,43 +1,59 @@
 package com.schooltas.dashboard.tests.bookTests;
 
+import java.util.ArrayList;
+
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.internal.collections.Pair;
 
 import com.schooltas.dashboard.pages.books.BookDetailsPage;
+import com.schooltas.dashboard.pages.books.BookForm;
 import com.schooltas.dashboard.pages.books.CreateBookPage;
 import com.schooltas.dashboard.pages.books.EditBookPage;
 import com.schooltas.dashboard.templates.BooksOverviewTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
-import com.schooltas.dashboard.utils.utils.ActionUtils;
 
 public class BookTests extends BaseClass {
 
-	@Test
-	public void createBookFromBookOverviewPage() throws InterruptedException{
+    public static BooksOverviewTemplate overviewTemplate;
+    public static BookDetailsPage bookDetails;
 
-		CreateBookPage createBook = PageFactory.initElements(driver, CreateBookPage.class);
-		BookDetailsPage bookDetails = PageFactory.initElements(driver, BookDetailsPage.class);
-		String ean = String.valueOf(ActionUtils.generateIsbnRandom());
+    @BeforeClass
+    public static void init() {
+        overviewTemplate = PageFactory.initElements(driver, BooksOverviewTemplate.class);
+        bookDetails = PageFactory.initElements(driver, BookDetailsPage.class);
+    }
 
-		dashboardMenu.clickMainMenuOption("Books");
-		leftMenu.clickMenuItem("Create book");
-		createBook.createBook(ean);
-		bookDetails.assertBookDetails(ean, true);
-	}
+    @Test
+    public void createBookFromBookOverviewPage() throws InterruptedException {
+        BookForm createBook = PageFactory.initElements(driver, CreateBookPage.class);
 
-	@Test
-	public void editBookFromOverviewPage(){
+        dashboardMenu.clickMainMenuOption("Books");
+        leftMenu.clickMenuItem("Create book");
 
-		BooksOverviewTemplate overviewTemplate = PageFactory.initElements(driver, BooksOverviewTemplate.class);
-		EditBookPage editBook = PageFactory.initElements(driver, EditBookPage.class);
-		BookDetailsPage bookDetails = PageFactory.initElements(driver, BookDetailsPage.class);
-		String ean = "3711413071302";
+        ArrayList<Pair<WebElement, String>> bookInput = createBook.fillBookDetails();
 
-		dashboardMenu.clickMainMenuOption("Books");
-		overviewTemplate.searchForEntityByEan(ean);
-		overviewTemplate.click("Details");
-		leftMenu.clickMenuItem("Edit book");
-		editBook.editBook();
-		bookDetails.assertBookDetails(ean, false);
-	}
+        createBook.save();
+
+        bookDetails.assertBookDetails(bookInput);
+    }
+
+    @Test
+    public void editBookFromOverviewPage() throws InterruptedException {
+        BookForm editBook = PageFactory.initElements(driver, EditBookPage.class);
+
+        dashboardMenu.clickMainMenuOption("Books");
+
+        overviewTemplate.searchForEntityByEan(editBook.getEan());
+        overviewTemplate.click("Details");
+
+        leftMenu.clickMenuItem("Edit book");
+
+        ArrayList<Pair<WebElement, String>> bookInput = editBook.fillBookDetails();
+
+        editBook.save();
+        bookDetails.assertBookDetails(bookInput);
+    }
 }

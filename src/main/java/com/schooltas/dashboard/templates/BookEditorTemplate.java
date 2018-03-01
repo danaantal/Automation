@@ -16,10 +16,6 @@ public class BookEditorTemplate {
 
 	private final WebDriver driver;
 
-	public BookEditorTemplate(WebDriver driver){
-		this.driver = driver;
-	}
-
 	@FindBy(how = How.CSS, using = "button.submit-button.button.green")
 	private WebElement saveBtn;
 
@@ -55,10 +51,18 @@ public class BookEditorTemplate {
 
 	@FindBy(how = How.CSS, using = "div.next")
 	private WebElement addNewPinOptions;
+	//
+	//	@FindBy(how = How.CSS, using = "div.alert-overlay")
+	//	private WebElement alertOverlay;
 
+
+	public BookEditorTemplate(WebDriver driver){
+		this.driver = driver;
+	}
 
 	public void rightClickOnThePage() throws InterruptedException{
 		Thread.sleep(7000);
+		//ActionUtils.waitForElementInvisible(alertOverlay);
 		ActionUtils.rightClick(pageOverlay.get(1));
 	}
 

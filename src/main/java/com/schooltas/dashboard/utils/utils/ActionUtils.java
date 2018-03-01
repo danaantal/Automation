@@ -26,7 +26,7 @@ public class ActionUtils extends BaseClass {
 	}
 
 	public static void waitForElementInvisible(WebElement element){
-		WebDriverWait wait = new WebDriverWait(driver, 5);
+		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.invisibilityOf(element));
 	}
 

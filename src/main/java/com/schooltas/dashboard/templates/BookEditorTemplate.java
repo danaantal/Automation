@@ -14,185 +14,195 @@ import com.schooltas.dashboard.utils.utils.ActionUtils;
 
 public class BookEditorTemplate {
 
-	private final WebDriver driver;
+    private final WebDriver driver;
 
-	@FindBy(how = How.CSS, using = "button.submit-button.button.green")
-	private WebElement saveBtn;
+    @FindBy(how = How.CSS, using = "button.submit-button.button.green")
+    private WebElement saveBtn;
 
-	@FindBy(how = How.CSS, using = "button.cancel-button.button.grey")
-	private WebElement cancelBtn;
+    @FindBy(how = How.CSS, using = "button.cancel-button.button.grey")
+    private WebElement cancelBtn;
 
-	@FindBy(how = How.CSS, using  = "div.loading-icon")
-	private WebElement loadingIcon;
+    @FindBy(how = How.CSS, using  = "div.loading-icon")
+    private WebElement loadingIcon;
 
-	@FindBy(how = How.CSS, using = "div.prikker-container.show-markers")
-	private List<WebElement> pinOverlay;
+    @FindBy(how = How.CSS, using = "div.prikker-container.show-markers")
+    private List<WebElement> pinOverlay;
 
-	@FindBy(how = How.CSS, using = "button.delete-button.button.red")
-	private WebElement deleteEnrichmentButton;
+    @FindBy(how = How.CSS, using = "button.delete-button.button.red")
+    private WebElement deleteEnrichmentButton;
 
-	@FindBy(how = How.CSS, using = "div.button.white.red")
-	private WebElement confirmDeleteButton;
+    @FindBy(how = How.CSS, using = "div.button.white.red")
+    private WebElement confirmDeleteButton;
 
-	@FindBy(how = How.CSS, using = "div.popover-canvas.inside-scroll")
-	private WebElement viewPinCanvas;
+    @FindBy(how = How.CSS, using = "div.popover-canvas.inside-scroll")
+    private WebElement viewPinCanvas;
 
-	@FindBy(how = How.CSS, using = "h3.reset.image-title")
-	private WebElement popupHeader;
+    @FindBy(how = How.CSS, using = "h3.reset.image-title")
+    private WebElement popupHeader;
 
-	@FindBy(id = "book-settings-button")
-	private WebElement bookPageSettingsBtn;
+    @FindBy(id = "book-settings-button")
+    private WebElement bookPageSettingsBtn;
 
-	@FindBy(how = How.CSS, using = "div.prev")
-	private WebElement addPinsMainMenu;
+    @FindBy(how = How.CSS, using = "div.prev")
+    private WebElement addPinsMainMenu;
 
-	@FindBy(how = How.CSS, using = "div.prikker-container.show-markers")
-	private List<WebElement> pageOverlay;
+    @FindBy(how = How.CSS, using = "div.prikker-container.show-markers")
+    private List<WebElement> pageOverlay;
 
-	@FindBy(how = How.CSS, using = "div.next")
-	private WebElement addNewPinOptions;
-	//
-	//	@FindBy(how = How.CSS, using = "div.alert-overlay")
-	//	private WebElement alertOverlay;
+    @FindBy(how = How.CSS, using = "div.next")
+    private WebElement addNewPinOptions;
+
+    @FindBy(id = "percentageLoader")
+    private List<WebElement> alertOverlay;
+
+    @FindBy(id = "booktitle-popup")
+    private WebElement bookTitlePopup;
+
+    //    @FindBy(how = How.CSS, using = "div.page.shown.loaded")
+    //    private List<WebElement> pageShownLoaded;
 
 
-	public BookEditorTemplate(WebDriver driver){
-		this.driver = driver;
-	}
+    public BookEditorTemplate(WebDriver driver){
+        this.driver = driver;
+    }
 
-	public void rightClickOnThePage() throws InterruptedException{
-		Thread.sleep(7000);
-		//ActionUtils.waitForElementInvisible(alertOverlay);
-		ActionUtils.rightClick(pageOverlay.get(1));
-	}
+    public void rightClickOnThePage() throws InterruptedException{
+        //Thread.sleep(7000);
+        ActionUtils.waitForElement(alertOverlay.get(0));
 
-	public void clickAddNewEnrichmentButton(String buttonName){
+        ActionUtils.waitForElement(bookTitlePopup);
 
-		clickAddNewEnrichmentButton(addPinsMainMenu, buttonName);
-	}
+        ActionUtils.waitForElement(pageOverlay.get(1));
+        ActionUtils.rightClick(pageOverlay.get(1));
+    }
 
-	public void clickTextInPopupEnrichmentButton(String buttonName){
+    public void clickAddNewEnrichmentButton(String buttonName){
 
-		clickAddNewEnrichmentButton(addNewPinOptions, buttonName);
-	}
+        clickAddNewEnrichmentButton(addPinsMainMenu, buttonName);
+    }
 
-	public void saveEnrichment(){
-		ActionUtils.waitForElementToBeClickable(saveBtn);
-		saveBtn.click();
-	}
+    public void clickTextInPopupEnrichmentButton(String buttonName){
 
-	public void cancel(){
-		ActionUtils.waitForElementToBeClickable(cancelBtn);
-		cancelBtn.click();
-	}
+        clickAddNewEnrichmentButton(addNewPinOptions, buttonName);
+    }
 
-	public void viewEnrichment(EnrichmentTypes pinType){
+    public void saveEnrichment(){
+        ActionUtils.waitForElementToBeClickable(saveBtn);
+        saveBtn.click();
+    }
 
-		List<WebElement> pinsOnThePageList = getPinsOnThePage(pinType.getType());
-		WebElement firstVisiblePin = pinsOnThePageList.get(1);
+    public void cancel(){
+        ActionUtils.waitForElementToBeClickable(cancelBtn);
+        cancelBtn.click();
+    }
 
-		firstVisiblePin.click();
-		ActionUtils.waitForElement(getViewCanvasForEnrichmentType(pinType));//to do handle all cases
-	}
+    public void viewEnrichment(EnrichmentTypes pinType){
 
-	public void clickAddNewEnrichmentButton(WebElement webelement, String buttonName){
+        List<WebElement> pinsOnThePageList = getPinsOnThePage(pinType.getType());
+        WebElement firstVisiblePin = pinsOnThePageList.get(1);
 
-		ArrayList<WebElement> addPinButtonsList = getAddPinMenuButtonList(webelement);
+        firstVisiblePin.click();
+        ActionUtils.waitForElement(getViewCanvasForEnrichmentType(pinType));//to do handle all cases
+    }
 
-		for(WebElement element : addPinButtonsList){
+    public void clickAddNewEnrichmentButton(WebElement webelement, String buttonName){
 
-			boolean isButtonName = element.getText().equals(buttonName);
-			if(isButtonName){
-				element.click();
-				return;
-			}
-		}
-	}
+        ArrayList<WebElement> addPinButtonsList = getAddPinMenuButtonList(webelement);
 
-	public void deleteEnrichment(EnrichmentTypes pinType) throws InterruptedException{
+        for(WebElement element : addPinButtonsList){
 
-		ActionUtils.waitForElementInvisible(loadingIcon);
-		List<WebElement> pinsOnThePageList = getPinsOnThePage(pinType.getType());
-		WebElement firstVisiblePin = pinsOnThePageList.get(1);
+            boolean isButtonName = element.getText().equals(buttonName);
+            if(isButtonName){
+                element.click();
+                return;
+            }
+        }
+    }
 
-		ActionUtils.rightClick(firstVisiblePin);
-		deleteAction();
-		ActionUtils.waitForElementInvisible(pinsOnThePageList.get(1));
-	}
+    public void deleteEnrichment(EnrichmentTypes pinType) throws InterruptedException{
 
-	private ArrayList<WebElement> getAddPinMenuButtonList(WebElement webelement){
+        ActionUtils.waitForElementInvisible(loadingIcon);
+        List<WebElement> pinsOnThePageList = getPinsOnThePage(pinType.getType());
+        WebElement firstVisiblePin = pinsOnThePageList.get(1);
 
-		List<WebElement> mainMenuChildren = webelement.findElements(By.xpath(".//*"));
-		ArrayList<WebElement> addPinButtonsList = new ArrayList<>();
+        ActionUtils.rightClick(firstVisiblePin);
+        deleteAction();
+        ActionUtils.waitForElementInvisible(pinsOnThePageList.get(1));
+    }
 
-		for(WebElement element : mainMenuChildren){
+    private ArrayList<WebElement> getAddPinMenuButtonList(WebElement webelement){
 
-			boolean isButton = element.getTagName().equals("button");
+        List<WebElement> mainMenuChildren = webelement.findElements(By.xpath(".//*"));
+        ArrayList<WebElement> addPinButtonsList = new ArrayList<>();
 
-			if(isButton)
-			{
-				addPinButtonsList.add(element);
-			}
-		}
-		return addPinButtonsList;
-	}
+        for(WebElement element : mainMenuChildren){
 
-	private void deleteAction(){
-		ActionUtils.waitForElement(deleteEnrichmentButton);
-		deleteEnrichmentButton.click();
-		confirmDeleteButton.click();
-	}
+            boolean isButton = element.getTagName().equals("button");
 
-	private WebElement getViewCanvasForEnrichmentType(EnrichmentTypes type){
-		WebElement element;
-		element = driver.findElement(By.cssSelector(type.getSelector()));
+            if(isButton)
+            {
+                addPinButtonsList.add(element);
+            }
+        }
+        return addPinButtonsList;
+    }
 
-		return element;
-	}
+    private void deleteAction(){
+        ActionUtils.waitForElement(deleteEnrichmentButton);
+        deleteEnrichmentButton.click();
+        confirmDeleteButton.click();
+    }
 
-	private ArrayList<WebElement> getPinsOnThePage(String string){
+    private WebElement getViewCanvasForEnrichmentType(EnrichmentTypes type){
+        WebElement element;
+        element = driver.findElement(By.cssSelector(type.getSelector()));
 
-		WebElement pageOverlay = pinOverlay.get(1);
+        return element;
+    }
 
-		List<WebElement> pinsList = pageOverlay.findElements(By.xpath(".//*"));
-		ArrayList<WebElement> pinsOnThePageList = new ArrayList<>();
+    private ArrayList<WebElement> getPinsOnThePage(String string){
 
-		for(WebElement element : pinsList){
+        WebElement pageOverlay = pinOverlay.get(1);
 
-			boolean isClass = element.getTagName().equals("div");
-			String nodeType = element.getAttribute("node-type");
+        List<WebElement> pinsList = pageOverlay.findElements(By.xpath(".//*"));
+        ArrayList<WebElement> pinsOnThePageList = new ArrayList<>();
 
-			if(nodeType!=null && nodeType.equals(string)) {
-				if(isClass){
-					pinsOnThePageList.add(element);
-				}
-			}
-		}
-		return pinsOnThePageList;
-	}
+        for(WebElement element : pinsList){
 
-	public WebElement getLoadingIcon() {
-		return loadingIcon;
-	}
+            boolean isClass = element.getTagName().equals("div");
+            String nodeType = element.getAttribute("node-type");
 
-	public void setLoadingIcon(WebElement loadingIcon) {
-		this.loadingIcon = loadingIcon;
-	}
+            if(nodeType!=null && nodeType.equals(string)) {
+                if(isClass){
+                    pinsOnThePageList.add(element);
+                }
+            }
+        }
+        return pinsOnThePageList;
+    }
 
-	public WebElement getViewPinCanvas() {
-		return viewPinCanvas;
-	}
+    public WebElement getLoadingIcon() {
+        return loadingIcon;
+    }
 
-	public void setViewPinCanvas(WebElement viewPinCanvas) {
-		this.viewPinCanvas = viewPinCanvas;
-	}
+    public void setLoadingIcon(WebElement loadingIcon) {
+        this.loadingIcon = loadingIcon;
+    }
 
-	public WebElement getPopupHeader() {
-		return popupHeader;
-	}
+    public WebElement getViewPinCanvas() {
+        return viewPinCanvas;
+    }
 
-	public void setPopupHeader(WebElement popupHeader) {
-		this.popupHeader = popupHeader;
-	}
+    public void setViewPinCanvas(WebElement viewPinCanvas) {
+        this.viewPinCanvas = viewPinCanvas;
+    }
+
+    public WebElement getPopupHeader() {
+        return popupHeader;
+    }
+
+    public void setPopupHeader(WebElement popupHeader) {
+        this.popupHeader = popupHeader;
+    }
 
 }

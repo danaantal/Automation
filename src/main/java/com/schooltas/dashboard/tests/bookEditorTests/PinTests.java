@@ -4,8 +4,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.schooltas.dashboard.pages.books.enrichments.AudioPinPage;
 import com.schooltas.dashboard.pages.books.enrichments.ImageInPopupPage;
+import com.schooltas.dashboard.pages.books.enrichments.MediaPinPage;
 import com.schooltas.dashboard.pages.books.enrichments.TextInPopupPage;
 import com.schooltas.dashboard.pages.books.enrichments.UrlPinPage;
 import com.schooltas.dashboard.templates.BookEditorTemplate;
@@ -118,8 +118,8 @@ public class PinTests extends BaseClass {
 
     @Test
     public void addNewAudioEnrichment() throws InterruptedException {
-        AudioPinPage audioPinPage = PageFactory.initElements(driver, AudioPinPage.class);
-        audioPinPage.setBookEditorTemplate(bookEditorTemplate);
+        MediaPinPage mediaPinPage = PageFactory.initElements(driver, MediaPinPage.class);
+        mediaPinPage.setBookEditorTemplate(bookEditorTemplate);
 
         String ean = "3711413071302";
         String fileId = "1177537";
@@ -136,16 +136,49 @@ public class PinTests extends BaseClass {
         bookEditorTemplate.clickTextInPopupEnrichmentButton("Audio");
 
         //audioPinPage.openUploadsList();
-        audioPinPage.waitForSideMenu();
-        audioPinPage.clickSelectFileButton();
-        audioPinPage.searchForAudioFile(fileId);
-        audioPinPage.chooseFile(fileId);
-        audioPinPage.fillEnrichmentDetails("Title", "MouseoverText");
+        mediaPinPage.waitForSideMenu();
+        mediaPinPage.clickSelectFileButton();
+        mediaPinPage.searchForAudioFile(fileId);
+        mediaPinPage.chooseFile(fileId);
+        mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText");
 
         bookEditorTemplate.saveEnrichment();
 
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Audio);
+    }
+
+    @Test
+    public void addNewVideoEnrichment() throws InterruptedException {
+        MediaPinPage mediaPinPage = PageFactory.initElements(driver, MediaPinPage.class);
+        mediaPinPage.setBookEditorTemplate(bookEditorTemplate);
+
+        String ean = "3711413071302";
+        String fileId = "1177536";
+
+        dashboardMenu.clickMainMenuOption("Books");
+
+        overviewTemplate.searchForEntityByEan(ean);
+        overviewTemplate.click("| Edit");
+
+        ActionUtils.switchwindow();
+
+        bookEditorTemplate.rightClickOnThePage();
+        bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
+        bookEditorTemplate.clickTextInPopupEnrichmentButton("Video");
+
+        //audioPinPage.openUploadsList();
+        mediaPinPage.waitForSideMenu();
+        mediaPinPage.clickSelectFileButton();
+        mediaPinPage.searchForAudioFile(fileId);
+        mediaPinPage.chooseFile(fileId);
+        mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText");
+
+        bookEditorTemplate.saveEnrichment();
+
+        ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
+
+        bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Video);
     }
 }

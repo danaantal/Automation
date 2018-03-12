@@ -10,7 +10,7 @@ import org.openqa.selenium.support.How;
 
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 
-public class AudioPinPage extends Enrichment {
+public class MediaPinPage extends Enrichment {
 
     @FindBy(how = How.CSS, using = "button.button.blue")
     private List<WebElement> selectFileButton;

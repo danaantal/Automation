@@ -4,6 +4,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.schooltas.dashboard.pages.books.enrichments.AudioPinPage;
 import com.schooltas.dashboard.pages.books.enrichments.ImageInPopupPage;
 import com.schooltas.dashboard.pages.books.enrichments.TextInPopupPage;
 import com.schooltas.dashboard.pages.books.enrichments.UrlPinPage;
@@ -13,7 +14,7 @@ import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.enums.EnrichmentTypes;
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 
-public class PinTests extends BaseClass{
+public class PinTests extends BaseClass {
 
     private static BooksOverviewTemplate overviewTemplate;
     private static BookEditorTemplate bookEditorTemplate;
@@ -25,7 +26,7 @@ public class PinTests extends BaseClass{
     }
 
     @Test
-    public void addNewTexInPopupEnrichment() throws InterruptedException{
+    public void addNewTexInPopupEnrichment() throws InterruptedException {
 
         TextInPopupPage textInPopupPage = PageFactory.initElements(driver, TextInPopupPage.class);
         textInPopupPage.setBookEditorTemplate(bookEditorTemplate);
@@ -56,7 +57,7 @@ public class PinTests extends BaseClass{
     }
 
     @Test
-    public void addNewImageInPopupEnrichment() throws InterruptedException{
+    public void addNewImageInPopupEnrichment() throws InterruptedException {
 
         ImageInPopupPage imageInPopupPage = PageFactory.initElements(driver, ImageInPopupPage.class);
         imageInPopupPage.setBookEditorTemplate(bookEditorTemplate);
@@ -90,7 +91,7 @@ public class PinTests extends BaseClass{
     }
 
     @Test
-    public void addNewLinkEnrichment() throws InterruptedException{
+    public void addNewLinkEnrichment() throws InterruptedException {
         UrlPinPage urlPinPage = PageFactory.initElements(driver, UrlPinPage.class);
         urlPinPage.setBookEditorTemplate(bookEditorTemplate);
 
@@ -113,5 +114,38 @@ public class PinTests extends BaseClass{
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Link);
+    }
+
+    @Test
+    public void addNewAudioEnrichment() throws InterruptedException {
+        AudioPinPage audioPinPage = PageFactory.initElements(driver, AudioPinPage.class);
+        audioPinPage.setBookEditorTemplate(bookEditorTemplate);
+
+        String ean = "3711413071302";
+        String fileId = "1177537";
+
+        dashboardMenu.clickMainMenuOption("Books");
+
+        overviewTemplate.searchForEntityByEan(ean);
+        overviewTemplate.click("| Edit");
+
+        ActionUtils.switchwindow();
+
+        bookEditorTemplate.rightClickOnThePage();
+        bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
+        bookEditorTemplate.clickTextInPopupEnrichmentButton("Audio");
+
+        //audioPinPage.openUploadsList();
+        audioPinPage.waitForSideMenu();
+        audioPinPage.clickSelectFileButton();
+        audioPinPage.searchForAudioFile(fileId);
+        audioPinPage.chooseFile(fileId);
+        audioPinPage.fillEnrichmentDetails("Title", "MouseoverText");
+
+        bookEditorTemplate.saveEnrichment();
+
+        ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
+
+        bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Audio);
     }
 }

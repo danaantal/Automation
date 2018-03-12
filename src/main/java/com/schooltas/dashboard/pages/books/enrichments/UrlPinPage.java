@@ -1,7 +1,6 @@
 package com.schooltas.dashboard.pages.books.enrichments;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,19 +15,12 @@ public class UrlPinPage extends Enrichment {
 
     public void fillEnrichmentDetails(String url) {
 
-        WebElement input = getInputField(linkInputList);
+        WebElement input = getInputField(linkInputList, "placeholder", "http://");
 
         ActionUtils.waitForElement(input);
         input.sendKeys(url);
     }
 
-    private WebElement getInputField(List<WebElement> elements) {
-        Optional<WebElement> findFirst = elements.stream()
-                .filter(element -> element.getAttribute("placeholder").equals("http://"))
-                .findFirst();
 
-        return findFirst.orElse(null);
-
-    }
 
 }

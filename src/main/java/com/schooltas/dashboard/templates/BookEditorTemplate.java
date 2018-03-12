@@ -181,6 +181,7 @@ public class BookEditorTemplate {
         return pinsOnThePageList;
     }
 
+
     public WebElement getLoadingIcon() {
         return loadingIcon;
     }

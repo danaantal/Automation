@@ -68,7 +68,7 @@ public class MediaPinPage extends Enrichment {
     public void fillEnrichmentDetails(String title, String mouseoverText) {
 
         WebElement titleField = getInputField(linkInputList, "type", "text");
-        WebElement mouseOverField = getMouseOverField(mouseover);
+        WebElement mouseOverField = getInputFieldFor(mouseover);
 
         titleField.sendKeys(title);
         mouseOverField.sendKeys(mouseoverText);

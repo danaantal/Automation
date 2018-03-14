@@ -8,6 +8,7 @@ import com.schooltas.dashboard.pages.books.enrichments.ImageInPopupPage;
 import com.schooltas.dashboard.pages.books.enrichments.MediaPinPage;
 import com.schooltas.dashboard.pages.books.enrichments.TextInPopupPage;
 import com.schooltas.dashboard.pages.books.enrichments.UrlPinPage;
+import com.schooltas.dashboard.pages.books.enrichments.YoutubePinPage;
 import com.schooltas.dashboard.templates.BookEditorTemplate;
 import com.schooltas.dashboard.templates.BooksOverviewTemplate;
 import com.schooltas.dashboard.tests.BaseClass;
@@ -180,5 +181,31 @@ public class PinTests extends BaseClass {
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Video);
+    }
+
+    @Test
+    public void addNewYoutubeEnrichment() throws InterruptedException {
+        YoutubePinPage youtubePinPage = PageFactory.initElements(driver, YoutubePinPage.class);
+        youtubePinPage.setBookEditorTemplate(bookEditorTemplate);
+
+        String ean = "3711413071302";
+
+        dashboardMenu.clickMainMenuOption("Books");
+
+        overviewTemplate.searchForEntityByEan(ean);
+        overviewTemplate.click("| Edit");
+
+        ActionUtils.switchwindow();
+
+        bookEditorTemplate.rightClickOnThePage();
+        bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
+        bookEditorTemplate.clickTextInPopupEnrichmentButton("YouTube");
+
+        youtubePinPage.fillEnrichmentDetails("https://www.youtube.com/watch?v=1SL1bSysul8", "Title", "mouseover text");
+
+        bookEditorTemplate.saveEnrichment();
+        ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
+
+        bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Youtube);
     }
 }

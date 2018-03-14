@@ -25,8 +25,8 @@ public abstract class Enrichment {
 
     }
 
-    protected WebElement getMouseOverField(WebElement mouseover) {
-        List<WebElement> children = mouseover.findElements(By.xpath(".//*"));
+    protected WebElement getInputFieldFor(WebElement parent) {
+        List<WebElement> children = parent.findElements(By.xpath(".//*"));
 
         Optional<WebElement> findMouseOverField = children.stream()
                 .filter(element -> (element.getAttribute("class").equals("st-textinput full")

@@ -32,11 +32,9 @@ public class PinTests extends BaseClass {
         TextInPopupPage textInPopupPage = PageFactory.initElements(driver, TextInPopupPage.class);
         textInPopupPage.setBookEditorTemplate(bookEditorTemplate);
 
-        String ean = "3711413071302";
-
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(ean);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 
@@ -63,11 +61,10 @@ public class PinTests extends BaseClass {
         ImageInPopupPage imageInPopupPage = PageFactory.initElements(driver, ImageInPopupPage.class);
         imageInPopupPage.setBookEditorTemplate(bookEditorTemplate);
 
-        String ean = "3711413071302";
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(ean);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
         overviewTemplate.click("| Edit");
 
         ActionUtils.switchwindow();
@@ -96,11 +93,9 @@ public class PinTests extends BaseClass {
         UrlPinPage urlPinPage = PageFactory.initElements(driver, UrlPinPage.class);
         urlPinPage.setBookEditorTemplate(bookEditorTemplate);
 
-        String ean = "3711413071302";
-
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(ean);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
         overviewTemplate.click("| Edit");
 
         ActionUtils.switchwindow();
@@ -122,12 +117,9 @@ public class PinTests extends BaseClass {
         MediaPinPage mediaPinPage = PageFactory.initElements(driver, MediaPinPage.class);
         mediaPinPage.setBookEditorTemplate(bookEditorTemplate);
 
-        String ean = "3711413071302";
-        String fileId = "1177537";
-
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(ean);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
         overviewTemplate.click("| Edit");
 
         ActionUtils.switchwindow();
@@ -139,8 +131,8 @@ public class PinTests extends BaseClass {
         //audioPinPage.openUploadsList();
         mediaPinPage.waitForSideMenu();
         mediaPinPage.clickSelectFileButton();
-        mediaPinPage.searchForAudioFile(fileId);
-        mediaPinPage.chooseFile(fileId);
+        mediaPinPage.searchForAudioFile(BookEditorTemplate.AUDIO_FILE_ID);
+        mediaPinPage.chooseFile(BookEditorTemplate.AUDIO_FILE_ID);
         mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText");
 
         bookEditorTemplate.saveEnrichment();
@@ -155,12 +147,9 @@ public class PinTests extends BaseClass {
         MediaPinPage mediaPinPage = PageFactory.initElements(driver, MediaPinPage.class);
         mediaPinPage.setBookEditorTemplate(bookEditorTemplate);
 
-        String ean = "3711413071302";
-        String fileId = "1177536";
-
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(ean);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
         overviewTemplate.click("| Edit");
 
         ActionUtils.switchwindow();
@@ -172,8 +161,8 @@ public class PinTests extends BaseClass {
         //audioPinPage.openUploadsList();
         mediaPinPage.waitForSideMenu();
         mediaPinPage.clickSelectFileButton();
-        mediaPinPage.searchForAudioFile(fileId);
-        mediaPinPage.chooseFile(fileId);
+        mediaPinPage.searchForAudioFile(BookEditorTemplate.VIDEO_FILE_ID);
+        mediaPinPage.chooseFile(BookEditorTemplate.VIDEO_FILE_ID);
         mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText");
 
         bookEditorTemplate.saveEnrichment();
@@ -188,11 +177,9 @@ public class PinTests extends BaseClass {
         YoutubePinPage youtubePinPage = PageFactory.initElements(driver, YoutubePinPage.class);
         youtubePinPage.setBookEditorTemplate(bookEditorTemplate);
 
-        String ean = "3711413071302";
-
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(ean);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
         overviewTemplate.click("| Edit");
 
         ActionUtils.switchwindow();

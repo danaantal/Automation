@@ -61,6 +61,9 @@ public class BookEditorTemplate {
     //    @FindBy(how = How.CSS, using = "div.page.shown.loaded")
     //    private List<WebElement> pageShownLoaded;
 
+    public final static String EAN = "3711413071302";
+    public final static String AUDIO_FILE_ID = "1177537";
+    public final static String VIDEO_FILE_ID = "1177536";
 
     public BookEditorTemplate(WebDriver driver){
         this.driver = driver;
@@ -206,4 +209,7 @@ public class BookEditorTemplate {
         this.popupHeader = popupHeader;
     }
 
+    public String getFileId() {
+        return fileId;
+    }
 }

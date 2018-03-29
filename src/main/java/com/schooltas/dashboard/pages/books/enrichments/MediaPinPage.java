@@ -30,13 +30,6 @@ public class MediaPinPage extends Enrichment {
     @FindBy(how = How.CSS, using = "ul.list-plain.choice-btns.form-step.slide-transition")
     private WebElement sideMenu;
 
-    @FindBy(how = How.CSS, using = "header.title.green")
-    private WebElement titleGreen;
-
-    public void waitForSideMenu() {
-
-        ActionUtils.waitForElement(titleGreen);
-    }
 
     public void searchForAudioFile(String fileId) {
         // 1177537
@@ -57,6 +50,7 @@ public class MediaPinPage extends Enrichment {
                 List<WebElement> children = file.findElements(By.xpath(".//*"));
                 for (WebElement element : children) {
                     if (element.getText().equals(fileId)) {
+                        //ActionUtils.waitForElement(file);
                         file.click();
                     }
                     return;
@@ -65,12 +59,14 @@ public class MediaPinPage extends Enrichment {
         }
     }
 
-    public void fillEnrichmentDetails(String title, String mouseoverText) {
+    public void fillEnrichmentDetails(String title, String mouseoverText) throws InterruptedException {
 
         WebElement titleField = getInputField(linkInputList, "type", "text");
         WebElement mouseOverField = getInputFieldFor(mouseover);
 
+        //ActionUtils.waitForElement(titleField);
         titleField.sendKeys(title);
+        Thread.sleep(1000);
         mouseOverField.sendKeys(mouseoverText);
     }
 

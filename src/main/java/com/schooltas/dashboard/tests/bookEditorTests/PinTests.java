@@ -35,12 +35,14 @@ public class PinTests extends BaseClass {
         dashboardMenu.clickMainMenuOption("Books");
 
         overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
-        bookEditorTemplate.clickTextInPopupEnrichmentButton("Text in popup");
+        bookEditorTemplate.clickNewTypeEnrichmentButton("Text in popup");
+
         textInPopupPage.fillEnrichmentDetailsFields("Test title", "Body text test");
 
         bookEditorTemplate.saveEnrichment();
@@ -63,7 +65,6 @@ public class PinTests extends BaseClass {
 
 
         dashboardMenu.clickMainMenuOption("Books");
-
         overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
         overviewTemplate.click("| Edit");
 
@@ -71,21 +72,22 @@ public class PinTests extends BaseClass {
 
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
-        bookEditorTemplate.clickTextInPopupEnrichmentButton("Image in popup");
+        bookEditorTemplate.clickNewTypeEnrichmentButton("Image in popup");
 
         imageInPopupPage.fillEnrichmentDetails("Test image in popup", "/Users/dantal/Downloads/PDFs/test2.jpg");
-
         bookEditorTemplate.saveEnrichment();
 
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
+
         bookEditorTemplate.viewEnrichment(EnrichmentTypes.Gallery);
 
-        imageInPopupPage.assertEnrichmentDetails("Test image in popup");
+        bookEditorTemplate.assertEnrichmentDetails("Test image in popup");
 
         ActionUtils.pressEscKey();
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Gallery);
 
+        System.out.println("image in popup deleted!");
     }
 
     @Test
@@ -102,7 +104,7 @@ public class PinTests extends BaseClass {
 
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
-        bookEditorTemplate.clickTextInPopupEnrichmentButton("Link (URL)");
+        bookEditorTemplate.clickNewTypeEnrichmentButton("Link (URL)");
 
         urlPinPage.fillEnrichmentDetails("http://thecodinglove.com/post/79149589869/hey-look-the-bug-is-fixed");
 
@@ -110,10 +112,12 @@ public class PinTests extends BaseClass {
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Link);
+
+        System.out.println("link deleted!");
     }
 
     @Test
-    public void addNewAudioEnrichment() throws InterruptedException {
+    public void addNewAudioFromListEnrichment() throws InterruptedException {
         MediaPinPage mediaPinPage = PageFactory.initElements(driver, MediaPinPage.class);
         mediaPinPage.setBookEditorTemplate(bookEditorTemplate);
 
@@ -126,13 +130,14 @@ public class PinTests extends BaseClass {
 
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
-        bookEditorTemplate.clickTextInPopupEnrichmentButton("Audio");
+        bookEditorTemplate.clickNewTypeEnrichmentButton("Audio");
 
-        //audioPinPage.openUploadsList();
-        mediaPinPage.waitForSideMenu();
+        bookEditorTemplate.waitForSideMenu();
         mediaPinPage.clickSelectFileButton();
+
         mediaPinPage.searchForAudioFile(BookEditorTemplate.AUDIO_FILE_ID);
         mediaPinPage.chooseFile(BookEditorTemplate.AUDIO_FILE_ID);
+
         mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText");
 
         bookEditorTemplate.saveEnrichment();
@@ -140,10 +145,12 @@ public class PinTests extends BaseClass {
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Audio);
+
+        System.out.println("audio deleted!");
     }
 
     @Test
-    public void addNewVideoEnrichment() throws InterruptedException {
+    public void addNewVideoFromListEnrichment() throws InterruptedException {
         MediaPinPage mediaPinPage = PageFactory.initElements(driver, MediaPinPage.class);
         mediaPinPage.setBookEditorTemplate(bookEditorTemplate);
 
@@ -156,10 +163,9 @@ public class PinTests extends BaseClass {
 
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
-        bookEditorTemplate.clickTextInPopupEnrichmentButton("Video");
+        bookEditorTemplate.clickNewTypeEnrichmentButton("Video");
 
-        //audioPinPage.openUploadsList();
-        mediaPinPage.waitForSideMenu();
+        bookEditorTemplate.waitForSideMenu();
         mediaPinPage.clickSelectFileButton();
         mediaPinPage.searchForAudioFile(BookEditorTemplate.VIDEO_FILE_ID);
         mediaPinPage.chooseFile(BookEditorTemplate.VIDEO_FILE_ID);
@@ -170,6 +176,8 @@ public class PinTests extends BaseClass {
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Video);
+
+        System.out.println("video deleted!");
     }
 
     @Test
@@ -186,7 +194,7 @@ public class PinTests extends BaseClass {
 
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
-        bookEditorTemplate.clickTextInPopupEnrichmentButton("YouTube");
+        bookEditorTemplate.clickNewTypeEnrichmentButton("YouTube");
 
         youtubePinPage.fillEnrichmentDetails("https://www.youtube.com/watch?v=1SL1bSysul8", "Title", "mouseover text");
 
@@ -194,5 +202,7 @@ public class PinTests extends BaseClass {
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Youtube);
+
+        System.out.println("youtube deleted!");
     }
 }

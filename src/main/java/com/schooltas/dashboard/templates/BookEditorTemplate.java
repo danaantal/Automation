@@ -1,5 +1,7 @@
 package com.schooltas.dashboard.templates;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class BookEditorTemplate {
     @FindBy(how = How.CSS, using = "button.cancel-button.button.grey")
     private WebElement cancelBtn;
 
-    @FindBy(how = How.CSS, using  = "div.loading-icon")
+    @FindBy(how = How.CSS, using = "div.loading-icon")
     private WebElement loadingIcon;
 
     @FindBy(how = How.CSS, using = "div.prikker-container.show-markers")
@@ -58,132 +60,176 @@ public class BookEditorTemplate {
     @FindBy(id = "booktitle-popup")
     private WebElement bookTitlePopup;
 
-    //    @FindBy(how = How.CSS, using = "div.page.shown.loaded")
-    //    private List<WebElement> pageShownLoaded;
+    @FindBy(how = How.CSS, using = "label.button.blue")
+    private List<WebElement> answerType;
+
+    @FindBy(how = How.CSS, using = "header.title.green")
+    private WebElement titleGreen;
+
+    @FindBy(id = "next-page")
+    private WebElement nextPage;
+
+    // @FindBy(how = How.CSS, using = "div.page.shown.loaded")
+    // private List<WebElement> pageShownLoaded;
 
     public final static String EAN = "3711413071302";
     public final static String AUDIO_FILE_ID = "1177537";
     public final static String VIDEO_FILE_ID = "1177536";
 
-    public BookEditorTemplate(WebDriver driver){
+    public BookEditorTemplate(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void rightClickOnThePage() throws InterruptedException{
-        //Thread.sleep(7000);
-        ActionUtils.waitForElement(alertOverlay.get(0));
+    public void rightClickOnThePage() throws InterruptedException {
+        // Thread.sleep(7000);
+        //ActionUtils.waitForElement(alertOverlay.get(0));
 
-        ActionUtils.waitForElement(bookTitlePopup);
+        //ActionUtils.waitForElement(bookTitlePopup);
 
         ActionUtils.waitForElement(pageOverlay.get(1));
         ActionUtils.rightClick(pageOverlay.get(1));
     }
 
-    public void clickAddNewEnrichmentButton(String buttonName){
+    public void clickOnThePage() {
+
+        pageOverlay.get(1).click();
+    }
+
+    public void navigateTotheNextPage(){
+
+        ActionUtils.waitForElement(alertOverlay.get(0));
+
+        ActionUtils.waitForElement(bookTitlePopup);
+
+        ActionUtils.waitForElement(pageOverlay.get(0));
+        nextPage.click();
+    }
+
+    public void clickAddNewEnrichmentButton(String buttonName) {
 
         clickAddNewEnrichmentButton(addPinsMainMenu, buttonName);
     }
 
-    public void clickTextInPopupEnrichmentButton(String buttonName){
+    public void clickNewTypeEnrichmentButton(String buttonName) {
 
         clickAddNewEnrichmentButton(addNewPinOptions, buttonName);
     }
 
-    public void saveEnrichment(){
+    public void saveEnrichment() {
         ActionUtils.waitForElementToBeClickable(saveBtn);
         saveBtn.click();
     }
 
-    public void cancel(){
+    public void cancel() {
         ActionUtils.waitForElementToBeClickable(cancelBtn);
         cancelBtn.click();
     }
 
-    public void viewEnrichment(EnrichmentTypes pinType){
+    public void viewEnrichment(EnrichmentTypes pinType) {
 
         List<WebElement> pinsOnThePageList = getPinsOnThePage(pinType.getType());
         WebElement firstVisiblePin = pinsOnThePageList.get(1);
 
         firstVisiblePin.click();
-        ActionUtils.waitForElement(getViewCanvasForEnrichmentType(pinType));//to do handle all cases
+        ActionUtils.waitForElement(getViewCanvasForEnrichmentType(pinType));// to do handle all cases
     }
 
-    public void clickAddNewEnrichmentButton(WebElement webelement, String buttonName){
+    public void clickAddNewEnrichmentButton(WebElement webelement, String buttonName) {
 
         ArrayList<WebElement> addPinButtonsList = getAddPinMenuButtonList(webelement);
 
-        for(WebElement element : addPinButtonsList){
+        for (WebElement element : addPinButtonsList) {
 
             boolean isButtonName = element.getText().equals(buttonName);
-            if(isButtonName){
+            if (isButtonName) {
                 element.click();
                 return;
             }
         }
     }
 
-    public void deleteEnrichment(EnrichmentTypes pinType) throws InterruptedException{
+    public void deleteEnrichment(EnrichmentTypes pinType) throws InterruptedException {
 
         ActionUtils.waitForElementInvisible(loadingIcon);
         List<WebElement> pinsOnThePageList = getPinsOnThePage(pinType.getType());
         WebElement firstVisiblePin = pinsOnThePageList.get(1);
 
         ActionUtils.rightClick(firstVisiblePin);
+
         deleteAction();
         ActionUtils.waitForElementInvisible(pinsOnThePageList.get(1));
     }
 
-    private ArrayList<WebElement> getAddPinMenuButtonList(WebElement webelement){
+    public void chooseTextAnswerType(String textAnswerType) {
+        if (textAnswerType.equals("On page")) {
+            ActionUtils.waitForElementToBeClickable(answerType.get(0));
+            answerType.get(0).click();
+        }
+        else if (textAnswerType.equals("In popup")) {
+            ActionUtils.waitForElementToBeClickable(answerType.get(1));
+            answerType.get(1).click();
+        }
+    }
+
+    public void waitForSideMenu() {
+
+        ActionUtils.waitForElement(titleGreen);
+    }
+
+    public void assertEnrichmentDetails(String text) {
+        ActionUtils.waitForElement(getPopupHeader());
+        assertEquals(getPopupHeader().getText(), text);
+    }
+
+    private ArrayList<WebElement> getAddPinMenuButtonList(WebElement webelement) {
 
         List<WebElement> mainMenuChildren = webelement.findElements(By.xpath(".//*"));
         ArrayList<WebElement> addPinButtonsList = new ArrayList<>();
 
-        for(WebElement element : mainMenuChildren){
+        for (WebElement element : mainMenuChildren) {
 
             boolean isButton = element.getTagName().equals("button");
 
-            if(isButton)
-            {
+            if (isButton) {
                 addPinButtonsList.add(element);
             }
         }
         return addPinButtonsList;
     }
 
-    private void deleteAction(){
+    private void deleteAction() {
         ActionUtils.waitForElement(deleteEnrichmentButton);
         deleteEnrichmentButton.click();
         confirmDeleteButton.click();
     }
 
-    private WebElement getViewCanvasForEnrichmentType(EnrichmentTypes type){
+    private WebElement getViewCanvasForEnrichmentType(EnrichmentTypes type) {
         WebElement element;
         element = driver.findElement(By.cssSelector(type.getSelector()));
 
         return element;
     }
 
-    private ArrayList<WebElement> getPinsOnThePage(String string){
+    private ArrayList<WebElement> getPinsOnThePage(String string) {
 
         WebElement pageOverlay = pinOverlay.get(1);
 
         List<WebElement> pinsList = pageOverlay.findElements(By.xpath(".//*"));
         ArrayList<WebElement> pinsOnThePageList = new ArrayList<>();
 
-        for(WebElement element : pinsList){
+        for (WebElement element : pinsList) {
 
             boolean isClass = element.getTagName().equals("div");
             String nodeType = element.getAttribute("node-type");
 
-            if(nodeType!=null && nodeType.equals(string)) {
-                if(isClass){
+            if (nodeType != null && nodeType.equals(string)) {
+                if (isClass) {
                     pinsOnThePageList.add(element);
                 }
             }
         }
         return pinsOnThePageList;
     }
-
 
     public WebElement getLoadingIcon() {
         return loadingIcon;
@@ -209,7 +255,7 @@ public class BookEditorTemplate {
         this.popupHeader = popupHeader;
     }
 
-    public String getFileId() {
-        return fileId;
+    public WebDriver getDriver() {
+        return driver;
     }
 }

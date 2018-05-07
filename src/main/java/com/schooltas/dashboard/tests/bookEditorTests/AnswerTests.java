@@ -242,11 +242,11 @@ public class AnswerTests extends BaseClass {
 
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
-        bookEditorTemplate.viewEnrichment(EnrichmentTypes.AnswerImage);
+        //bookEditorTemplate.viewEnrichment(EnrichmentTypes.AnswerImage);
 
-        bookEditorTemplate.assertEnrichmentDetails("Test image in popup");
+        //bookEditorTemplate.assertEnrichmentDetails("Test image in popup");
 
-        ActionUtils.pressEscKey();
+        //ActionUtils.pressEscKey();
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.AnswerImage);
 

@@ -20,7 +20,7 @@ public class TextInPopupPage extends Enrichment {
 
     public void fillEnrichmentDetailsFields(String title, String body) {
 
-        ActionUtils.waitForElement(textInPopupPinTitleField);
+        //ActionUtils.waitForElement(textInPopupPinTitleField);
         textInPopupPinTitleField.sendKeys(title);
         bodyTextArea.sendKeys(body);
     }

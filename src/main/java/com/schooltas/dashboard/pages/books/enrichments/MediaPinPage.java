@@ -66,7 +66,6 @@ public class MediaPinPage extends Enrichment {
 
         //ActionUtils.waitForElement(titleField);
         titleField.sendKeys(title);
-        Thread.sleep(1000);
         mouseOverField.sendKeys(mouseoverText);
     }
 

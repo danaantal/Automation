@@ -39,9 +39,12 @@ public class PinTests extends BaseClass {
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 
+        bookEditorTemplate.navigateTotheNextPage();
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
         bookEditorTemplate.clickNewTypeEnrichmentButton("Text in popup");
+
+        bookEditorTemplate.waitForSideMenu();
 
         textInPopupPage.fillEnrichmentDetailsFields("Test title", "Body text test");
 
@@ -70,9 +73,12 @@ public class PinTests extends BaseClass {
 
         ActionUtils.switchwindow();
 
+        bookEditorTemplate.navigateTotheNextPage();
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
         bookEditorTemplate.clickNewTypeEnrichmentButton("Image in popup");
+
+        bookEditorTemplate.waitForSideMenu();
 
         imageInPopupPage.fillEnrichmentDetails("Test image in popup", "/Users/dantal/Downloads/PDFs/test2.jpg");
         bookEditorTemplate.saveEnrichment();
@@ -102,9 +108,12 @@ public class PinTests extends BaseClass {
 
         ActionUtils.switchwindow();
 
+        bookEditorTemplate.navigateTotheNextPage();
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
         bookEditorTemplate.clickNewTypeEnrichmentButton("Link (URL)");
+
+        bookEditorTemplate.waitForSideMenu();
 
         urlPinPage.fillEnrichmentDetails("http://thecodinglove.com/post/79149589869/hey-look-the-bug-is-fixed");
 
@@ -128,6 +137,7 @@ public class PinTests extends BaseClass {
 
         ActionUtils.switchwindow();
 
+        bookEditorTemplate.navigateTotheNextPage();
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
         bookEditorTemplate.clickNewTypeEnrichmentButton("Audio");
@@ -161,6 +171,7 @@ public class PinTests extends BaseClass {
 
         ActionUtils.switchwindow();
 
+        bookEditorTemplate.navigateTotheNextPage();
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
         bookEditorTemplate.clickNewTypeEnrichmentButton("Video");
@@ -192,9 +203,12 @@ public class PinTests extends BaseClass {
 
         ActionUtils.switchwindow();
 
+        bookEditorTemplate.navigateTotheNextPage();
         bookEditorTemplate.rightClickOnThePage();
         bookEditorTemplate.clickAddNewEnrichmentButton("Add new pin");
         bookEditorTemplate.clickNewTypeEnrichmentButton("YouTube");
+
+        bookEditorTemplate.waitForSideMenu();
 
         youtubePinPage.fillEnrichmentDetails("https://www.youtube.com/watch?v=1SL1bSysul8", "Title", "mouseover text");
 

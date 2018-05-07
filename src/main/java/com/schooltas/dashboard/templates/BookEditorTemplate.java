@@ -21,6 +21,9 @@ public class BookEditorTemplate {
     @FindBy(how = How.CSS, using = "button.submit-button.button.green")
     private WebElement saveBtn;
 
+    @FindBy(id = "poi-next")
+    private WebElement nextBtn;
+
     @FindBy(how = How.CSS, using = "button.cancel-button.button.grey")
     private WebElement cancelBtn;
 
@@ -82,9 +85,9 @@ public class BookEditorTemplate {
 
     public void rightClickOnThePage() throws InterruptedException {
         // Thread.sleep(7000);
-        //ActionUtils.waitForElement(alertOverlay.get(0));
+        // ActionUtils.waitForElement(alertOverlay.get(0));
 
-        //ActionUtils.waitForElement(bookTitlePopup);
+        // ActionUtils.waitForElement(bookTitlePopup);
 
         ActionUtils.waitForElement(pageOverlay.get(1));
         ActionUtils.rightClick(pageOverlay.get(1));
@@ -95,18 +98,26 @@ public class BookEditorTemplate {
         pageOverlay.get(1).click();
     }
 
-    public void navigateTotheNextPage(){
+    public void navigateTotheNextPage() {
 
         ActionUtils.waitForElement(alertOverlay.get(0));
 
         ActionUtils.waitForElement(bookTitlePopup);
 
-        ActionUtils.waitForElement(pageOverlay.get(0));
-        nextPage.click();
+        if (pageOverlay.get(0).isDisplayed()) {
+            ActionUtils.waitForElement(pageOverlay.get(0));
+            nextPage.click();
+        }
+    }
+
+    public void goToNextStep() {
+        ActionUtils.waitForElementToBeClickable(nextBtn);
+        nextBtn.click();
     }
 
     public void clickAddNewEnrichmentButton(String buttonName) {
 
+        ActionUtils.waitForElement(addPinsMainMenu);
         clickAddNewEnrichmentButton(addPinsMainMenu, buttonName);
     }
 
@@ -174,6 +185,10 @@ public class BookEditorTemplate {
     public void waitForSideMenu() {
 
         ActionUtils.waitForElement(titleGreen);
+    }
+
+    public void clickSideMenu() {
+        titleGreen.click();
     }
 
     public void assertEnrichmentDetails(String text) {

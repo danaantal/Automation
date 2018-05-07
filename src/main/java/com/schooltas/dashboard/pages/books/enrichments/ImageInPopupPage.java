@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import com.schooltas.dashboard.utils.utils.ActionUtils;
-
 public class ImageInPopupPage extends Enrichment{
 
     @FindBy(how = How.CSS, using = "input.st-textinput.full")
@@ -25,7 +23,7 @@ public class ImageInPopupPage extends Enrichment{
 
     public void fillEnrichmentDetails(String title, String path){
 
-        ActionUtils.waitForElement(imagePopupTitleField.get(0));
+        //ActionUtils.waitForElement(imagePopupTitleField.get(0));
 
         imagePopupTitleField.get(0).sendKeys(title);
         uploadImageButton.sendKeys(path);

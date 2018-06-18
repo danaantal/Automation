@@ -4,6 +4,7 @@ import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 
@@ -18,11 +19,31 @@ public class TextInPopupPage extends Enrichment {
     @FindBy(id = "wmd-input")
     private WebElement bodyTextArea;
 
-    public void fillEnrichmentDetailsFields(String title, String body) {
+    @FindBy(id = "mouseoverTextField")
+    private WebElement mouseoverSelector;
 
-        //ActionUtils.waitForElement(textInPopupPinTitleField);
+    @FindBy(id = "premiumCheckbox")
+    private WebElement premiumCheckbox;
+
+    @FindBy(how = How.CSS, using = "div.isPremiumCheckbox")
+    private WebElement checkboxDiv;
+
+    public void fillEnrichmentDetailsFields(String title, String body, String mouseover, boolean isPremium) {
+
+        WebElement mouseoverField = getElementByAttributeAndTagname(mouseoverSelector, "class", "st-textinput full",
+                "input");
+
+        WebElement premiumCheckbox = getElementByTagName(checkboxDiv, "label");
+
+        // ActionUtils.waitForElement(textInPopupPinTitleField);
         textInPopupPinTitleField.sendKeys(title);
         bodyTextArea.sendKeys(body);
+
+        mouseoverField.sendKeys(mouseover);
+
+        if (isPremium) {
+            premiumCheckbox.click();
+        }
     }
 
     public void assertEnrichmentDetails(String text) {

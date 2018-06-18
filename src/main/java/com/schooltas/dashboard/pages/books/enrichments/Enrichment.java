@@ -16,7 +16,8 @@ public abstract class Enrichment {
         this.bookEditorTemplate = bookEditorTemplate;
     }
 
-    protected WebElement getInputField(List<WebElement> elements, String attribute, String value) {
+    protected WebElement getElementByAttribute(List<WebElement> elements, String attribute, String value) {
+        // System.out.println(attribute);
         Optional<WebElement> findFirst = elements.stream()
                 .filter(element -> element.getAttribute(attribute).equals(value))
                 .findFirst();
@@ -25,16 +26,28 @@ public abstract class Enrichment {
 
     }
 
-    protected WebElement getInputFieldFor(WebElement parent) {
+    protected WebElement getElementByAttributeAndTagname(WebElement parent, String attribute, String value,
+            String tagName) {
         List<WebElement> children = parent.findElements(By.xpath(".//*"));
 
-        Optional<WebElement> findMouseOverField = children.stream()
-                .filter(element -> (element.getAttribute("class").equals("st-textinput full")
-                        && (element.getTagName().equals("input"))))
+        Optional<WebElement> findElement = children.stream()
+                .filter(element -> (element.getAttribute(attribute).equals(value)
+                        && (element.getTagName().equals(tagName))))
                 .findFirst();
 
-        return findMouseOverField.orElse(null);
+        return findElement.orElse(null);
+
+    }
+
+    protected WebElement getElementByTagName(WebElement parent, String tagName) {
+
+        List<WebElement> children = parent.findElements(By.xpath(".//*"));
+
+        Optional<WebElement> findField = children.stream()
+                .filter(element -> (element.getTagName().equals(tagName)))
+                .findFirst();
+
+        return findField.orElse(null);
     }
 
 }
-

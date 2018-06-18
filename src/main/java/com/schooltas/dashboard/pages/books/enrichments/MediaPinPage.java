@@ -1,7 +1,6 @@
 package com.schooltas.dashboard.pages.books.enrichments;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -30,11 +29,11 @@ public class MediaPinPage extends Enrichment {
     @FindBy(how = How.CSS, using = "ul.list-plain.choice-btns.form-step.slide-transition")
     private WebElement sideMenu;
 
-
     public void searchForAudioFile(String fileId) {
         // 1177537
-        WebElement searchInput = getSearchField();
-        WebElement searchButton = getSearchButton();
+        WebElement searchInput = getElementByAttributeAndTagname(searchContainer, "placeholder",
+                "Search on title, ID-number or filename", "input");
+        WebElement searchButton = getElementByAttributeAndTagname(searchContainer, "type", "submit", "button");
 
         searchInput.sendKeys(fileId);
         searchButton.click();
@@ -50,7 +49,7 @@ public class MediaPinPage extends Enrichment {
                 List<WebElement> children = file.findElements(By.xpath(".//*"));
                 for (WebElement element : children) {
                     if (element.getText().equals(fileId)) {
-                        //ActionUtils.waitForElement(file);
+                        // ActionUtils.waitForElement(file);
                         file.click();
                     }
                     return;
@@ -61,10 +60,10 @@ public class MediaPinPage extends Enrichment {
 
     public void fillEnrichmentDetails(String title, String mouseoverText) throws InterruptedException {
 
-        WebElement titleField = getInputField(linkInputList, "type", "text");
-        WebElement mouseOverField = getInputFieldFor(mouseover);
+        WebElement titleField = getElementByAttribute(linkInputList, "type", "text");
+        WebElement mouseOverField = getElementByAttributeAndTagname(mouseover, "class", "st-textinput full", "input");
 
-        //ActionUtils.waitForElement(titleField);
+        // ActionUtils.waitForElement(titleField);
         titleField.sendKeys(title);
         mouseOverField.sendKeys(mouseoverText);
     }
@@ -75,33 +74,9 @@ public class MediaPinPage extends Enrichment {
         for (WebElement child : children) {
             System.out.println(child.getLocation());
             ActionUtils.waitForElementToBeClickable(child);
-            // Thread.sleep(500);
             child.click();
             return child;
         }
         return null;
-    }
-
-    private WebElement getSearchField() {
-
-        List<WebElement> children = searchContainer.findElements(By.xpath(".//*"));
-
-        Optional<WebElement> findSearchField = children.stream()
-                .filter(element -> (element.getAttribute("placeholder").equals("Search on title, ID-number or filename")
-                        && (element.getTagName().equals("input"))))
-                .findFirst();
-
-        return findSearchField.orElse(null);
-    }
-
-    private WebElement getSearchButton() {
-        List<WebElement> children = searchContainer.findElements(By.xpath(".//*"));
-
-        Optional<WebElement> findSearchButton = children.stream()
-                .filter(element -> (element.getAttribute("type").equals("submit")
-                        && (element.getTagName().equals("button"))))
-                .findFirst();
-
-        return findSearchButton.orElse(null);
     }
 }

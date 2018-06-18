@@ -41,7 +41,7 @@ public class HotspotImagePage extends Enrichment {
         // SK-A-5
         // assertTrue(step2.isDisplayed());
         ActionUtils.waitForElement(helpBtn.get(0));
-        WebElement objectNumberInput = getInputField(linkInputList, "placeholder", "e.g. SK-A-2963");
+        WebElement objectNumberInput = getElementByAttribute(linkInputList, "placeholder", "e.g. SK-A-2963");
         objectNumberInput.sendKeys(objectNumber);
     }
 
@@ -49,9 +49,9 @@ public class HotspotImagePage extends Enrichment {
 
         ActionUtils.waitForElement(helpBtn.get(1));
 
-        WebElement titleField = getInputField(linkInputList, "type", "text");
-        WebElement mouseOverField = getInputFieldFor(mouseover);
-        WebElement urlField = getInputField(linkInputList, "placeholder",
+        WebElement titleField = getElementByAttribute(linkInputList, "type", "text");
+        WebElement mouseOverField = getElementByAttributeAndTagname(mouseover, "class", "st-textinput full", "input");
+        WebElement urlField = getElementByAttribute(linkInputList, "placeholder",
                 "e.g. http://hdl.handle.net/10934/RM0001.COLLECT.8891");
 
         ActionUtils.waitForElement(titleField);

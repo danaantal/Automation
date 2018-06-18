@@ -15,12 +15,9 @@ public class UrlPinPage extends Enrichment {
 
     public void fillEnrichmentDetails(String url) {
 
-        WebElement input = getInputField(linkInputList, "placeholder", "http://");
-
+        WebElement input = getElementByAttribute(linkInputList, "placeholder", "http://");
         ActionUtils.waitForElement(input);
         input.sendKeys(url);
     }
-
-
 
 }

@@ -21,13 +21,13 @@ public class YoutubePinPage extends Enrichment{
 
     public void fillEnrichmentDetails(String url, String title, String mouseover) {
 
-        WebElement linkInput = getInputField(linkInputList, "placeholder", "http://");
-        WebElement titleInput = getInputFieldFor(titleInputDiv);
-        WebElement mouseoverInput = getInputFieldFor(mouseoverField);
+        WebElement linkInput = getElementByAttribute(linkInputList, "placeholder", "http://");
+        WebElement titleField = getElementByAttributeAndTagname(titleInputDiv, "class", "st-textinput full", "input");
+        WebElement mouseoverInput = getElementByAttributeAndTagname(mouseoverField, "class", "st-textinput full", "input");
 
         ActionUtils.waitForElement(linkInput);
         linkInput.sendKeys(url);
-        titleInput.sendKeys(title);
+        titleField.sendKeys(title);
         mouseoverInput.sendKeys(mouseover);
     }
 }

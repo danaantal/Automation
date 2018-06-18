@@ -19,7 +19,7 @@ public class TextInPopupAnswerPage extends Enrichment{
 
     public void fillEnrichmentDetails(String title, String body, String mouseover){
 
-        WebElement mouseoverInput = getInputFieldFor(mouseoverField);
+        WebElement mouseoverInput = getElementByAttributeAndTagname(mouseoverField, "class", "st-textinput full", "input");
 
         ActionUtils.waitForElement(titleInput);
         titleInput.sendKeys(title);

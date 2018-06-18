@@ -27,7 +27,7 @@ public class PinTests extends BaseClass {
     }
 
     @Test
-    public void addNewTexInPopupEnrichment() throws InterruptedException {
+    public void addNewTexInPopupEnrichmentThenDelete() throws InterruptedException {
 
         TextInPopupPage textInPopupPage = PageFactory.initElements(driver, TextInPopupPage.class);
         textInPopupPage.setBookEditorTemplate(bookEditorTemplate);
@@ -46,7 +46,7 @@ public class PinTests extends BaseClass {
 
         bookEditorTemplate.waitForSideMenu();
 
-        textInPopupPage.fillEnrichmentDetailsFields("Test title", "Body text test");
+        textInPopupPage.fillEnrichmentDetailsFields("Test title", "Body text test", "mouseover text", true);
 
         bookEditorTemplate.saveEnrichment();
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());

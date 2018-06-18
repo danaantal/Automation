@@ -27,7 +27,7 @@ public class InternalLinkPage extends Enrichment{
 
     public void fillInternalLinkDetails(String pageNo, String height, boolean showArrow, String mouseover){
 
-        WebElement mouseoverField = getInputFieldFor(mouseoverSelector);
+        WebElement mouseoverField = getElementByAttributeAndTagname(mouseoverSelector, "class", "st-textinput full", "input");
 
         pageNr.sendKeys(pageNo);
         lineHeight.sendKeys(height);

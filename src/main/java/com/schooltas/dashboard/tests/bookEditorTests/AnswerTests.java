@@ -237,7 +237,7 @@ public class AnswerTests extends BaseClass {
         bookEditorTemplate.clickNewTypeEnrichmentButton("Image in popup");
         bookEditorTemplate.waitForSideMenu();
 
-        imageInPopupPage.fillEnrichmentDetails("Test image in popup", "/Users/dantal/Downloads/PDFs/test2.jpg");
+        imageInPopupPage.fillEnrichmentDetails("Test image in popup", "mouseover text", "/Users/dantal/Downloads/PDFs/test2.jpg", false);
         bookEditorTemplate.saveEnrichment();
 
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
@@ -277,7 +277,7 @@ public class AnswerTests extends BaseClass {
         mediaPinPage.searchForAudioFile(BookEditorTemplate.AUDIO_FILE_ID);
         mediaPinPage.chooseFile(BookEditorTemplate.AUDIO_FILE_ID);
 
-        mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText");
+        mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText", false);
 
         bookEditorTemplate.saveEnrichment();
 

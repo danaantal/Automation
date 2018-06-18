@@ -22,9 +22,6 @@ public class TextInPopupPage extends Enrichment {
     @FindBy(id = "mouseoverTextField")
     private WebElement mouseoverSelector;
 
-    @FindBy(id = "premiumCheckbox")
-    private WebElement premiumCheckbox;
-
     @FindBy(how = How.CSS, using = "div.isPremiumCheckbox")
     private WebElement checkboxDiv;
 

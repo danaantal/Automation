@@ -80,7 +80,7 @@ public class PinTests extends BaseClass {
 
         bookEditorTemplate.waitForSideMenu();
 
-        imageInPopupPage.fillEnrichmentDetails("Test image in popup", "/Users/dantal/Downloads/PDFs/test2.jpg");
+        imageInPopupPage.fillEnrichmentDetails("Test image in popup", "mouseover text", "/Users/dantal/Downloads/PDFs/test2.jpg", true);
         bookEditorTemplate.saveEnrichment();
 
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
@@ -115,7 +115,7 @@ public class PinTests extends BaseClass {
 
         bookEditorTemplate.waitForSideMenu();
 
-        urlPinPage.fillEnrichmentDetails("http://thecodinglove.com/post/79149589869/hey-look-the-bug-is-fixed");
+        urlPinPage.fillEnrichmentDetails("http://thecodinglove.com/post/79149589869/hey-look-the-bug-is-fixed", true);
 
         bookEditorTemplate.saveEnrichment();
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
@@ -148,7 +148,7 @@ public class PinTests extends BaseClass {
         mediaPinPage.searchForAudioFile(BookEditorTemplate.AUDIO_FILE_ID);
         mediaPinPage.chooseFile(BookEditorTemplate.AUDIO_FILE_ID);
 
-        mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText");
+        mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText", true);
 
         bookEditorTemplate.saveEnrichment();
 
@@ -180,7 +180,7 @@ public class PinTests extends BaseClass {
         mediaPinPage.clickSelectFileButton();
         mediaPinPage.searchForAudioFile(BookEditorTemplate.VIDEO_FILE_ID);
         mediaPinPage.chooseFile(BookEditorTemplate.VIDEO_FILE_ID);
-        mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText");
+        mediaPinPage.fillEnrichmentDetails("Title", "MouseoverText", true);
 
         bookEditorTemplate.saveEnrichment();
 
@@ -210,7 +210,7 @@ public class PinTests extends BaseClass {
 
         bookEditorTemplate.waitForSideMenu();
 
-        youtubePinPage.fillEnrichmentDetails("https://www.youtube.com/watch?v=1SL1bSysul8", "Title", "mouseover text");
+        youtubePinPage.fillEnrichmentDetails("https://www.youtube.com/watch?v=1SL1bSysul8", "Title", "mouseover text", true);
 
         bookEditorTemplate.saveEnrichment();
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());

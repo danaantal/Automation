@@ -13,11 +13,20 @@ public class UrlPinPage extends Enrichment {
     @FindBy(how = How.CSS, using = "input.st-textinput.full")
     private List<WebElement> linkInputList;
 
-    public void fillEnrichmentDetails(String url) {
+    @FindBy(how = How.CSS, using = "div.isPremiumCheckbox")
+    private WebElement checkboxDiv;
+
+    public void fillEnrichmentDetails(String url, boolean isPremium) {
 
         WebElement input = getElementByAttribute(linkInputList, "placeholder", "http://");
+
         ActionUtils.waitForElement(input);
         input.sendKeys(url);
+
+        if (isPremium) {
+            WebElement premiumCheckbox = getElementByTagName(checkboxDiv, "label");
+            premiumCheckbox.click();
+        }
     }
 
 }

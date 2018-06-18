@@ -29,6 +29,9 @@ public class MediaPinPage extends Enrichment {
     @FindBy(how = How.CSS, using = "ul.list-plain.choice-btns.form-step.slide-transition")
     private WebElement sideMenu;
 
+    @FindBy(how = How.CSS, using = "div.isPremiumCheckbox")
+    private WebElement checkboxDiv;
+
     public void searchForAudioFile(String fileId) {
         // 1177537
         WebElement searchInput = getElementByAttributeAndTagname(searchContainer, "placeholder",
@@ -58,7 +61,7 @@ public class MediaPinPage extends Enrichment {
         }
     }
 
-    public void fillEnrichmentDetails(String title, String mouseoverText) throws InterruptedException {
+    public void fillEnrichmentDetails(String title, String mouseoverText, boolean isPremium) throws InterruptedException {
 
         WebElement titleField = getElementByAttribute(linkInputList, "type", "text");
         WebElement mouseOverField = getElementByAttributeAndTagname(mouseover, "class", "st-textinput full", "input");
@@ -66,6 +69,11 @@ public class MediaPinPage extends Enrichment {
         // ActionUtils.waitForElement(titleField);
         titleField.sendKeys(title);
         mouseOverField.sendKeys(mouseoverText);
+
+        if (isPremium) {
+            WebElement premiumCheckbox = getElementByTagName(checkboxDiv, "label");
+            premiumCheckbox.click();
+        }
     }
 
     public WebElement clickSelectFileButton() throws InterruptedException {

@@ -20,12 +20,27 @@ public class ImageInPopupPage extends Enrichment{
     @FindBy(how = How.CSS, using  = "div.image-popup-viewer.shown")
     private WebElement imageViewer;
 
+    @FindBy(how = How.CSS, using = "div.isPremiumCheckbox")
+    private WebElement checkboxDiv;
 
-    public void fillEnrichmentDetails(String title, String path){
+    @FindBy(id = "mouseoverTextField")
+    private WebElement mouseoverSelector;
+
+
+    public void fillEnrichmentDetails(String title, String mouseover, String path, boolean isPremium){
 
         //ActionUtils.waitForElement(imagePopupTitleField.get(0));
+        WebElement mouseoverField = getElementByAttributeAndTagname(mouseoverSelector, "class", "st-textinput full",
+                "input");
 
         imagePopupTitleField.get(0).sendKeys(title);
+        mouseoverField.sendKeys(mouseover);
+
+        if (isPremium) {
+            WebElement premiumCheckbox = getElementByTagName(checkboxDiv, "label");
+            premiumCheckbox.click();
+        }
+
         uploadImageButton.sendKeys(path);
     }
 

@@ -29,6 +29,20 @@ public class ActionUtils extends BaseClass {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    public static void waitForElementToBeVisible(WebElement element, int waitTime) {
+        WebDriverWait wait = new WebDriverWait(driver, 1);
+
+        for (int attempt = 0; attempt < waitTime; attempt++) {
+            try {
+                System.out.println("[" + attempt + "]" + "Displayed: " + element.isDisplayed());
+                wait.until(ExpectedConditions.visibilityOf(element));
+                break;
+            } catch (Exception e) {
+                //  driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            }
+        }
+    }
+
     public static void waitForElementInvisible(WebElement element){
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.invisibilityOf(element));

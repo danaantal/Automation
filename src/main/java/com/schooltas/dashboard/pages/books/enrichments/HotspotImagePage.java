@@ -22,14 +22,11 @@ public class HotspotImagePage extends Enrichment {
     @FindBy(id = "mouseoverTextField")
     private WebElement mouseover;
 
-    @FindBy(how = How.CSS, using = "li.step1.done")
-    private WebElement step2;
-
-    @FindBy(how = How.CSS, using = "li.step3.active")
-    private WebElement step3;
-
     @FindBy(how = How.CSS, using = "button.button.iconic.help-button.compact")
     private List<WebElement> helpBtn;
+
+    @FindBy(how = How.CSS, using = "fieldset.divided")
+    private List<WebElement> titleInputDiv;
 
     public void completeStepOne() {
 
@@ -39,7 +36,6 @@ public class HotspotImagePage extends Enrichment {
 
     public void completeStepTwo(String objectNumber) {
         // SK-A-5
-        // assertTrue(step2.isDisplayed());
         ActionUtils.waitForElement(helpBtn.get(0));
         WebElement objectNumberInput = getElementByAttribute(linkInputList, "placeholder", "e.g. SK-A-2963");
         objectNumberInput.sendKeys(objectNumber);
@@ -49,12 +45,12 @@ public class HotspotImagePage extends Enrichment {
 
         ActionUtils.waitForElement(helpBtn.get(1));
 
-        WebElement titleField = getElementByAttribute(linkInputList, "type", "text");
+        WebElement titleField = getElementByTagName(titleInputDiv.get(1), "input");
         WebElement mouseOverField = getElementByAttributeAndTagname(mouseover, "class", "st-textinput full", "input");
         WebElement urlField = getElementByAttribute(linkInputList, "placeholder",
                 "e.g. http://hdl.handle.net/10934/RM0001.COLLECT.8891");
 
-        ActionUtils.waitForElement(titleField);
+        ActionUtils.waitForElementToBeVisible(titleField, 5);
         titleField.sendKeys(title);
         mouseOverField.sendKeys(mouseoverText);
         urlField.sendKeys(url);

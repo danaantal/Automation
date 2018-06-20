@@ -15,7 +15,7 @@ import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.enums.EnrichmentTypes;
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 
-public class PinTests extends BaseClass {
+public class CreatePinTests extends BaseClass {
 
     private static BooksOverviewTemplate overviewTemplate;
     private static BookEditorTemplate bookEditorTemplate;
@@ -34,7 +34,7 @@ public class PinTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
 
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
@@ -68,7 +68,7 @@ public class PinTests extends BaseClass {
 
 
         dashboardMenu.clickMainMenuOption("Books");
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
 
         ActionUtils.switchwindow();
@@ -103,7 +103,7 @@ public class PinTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
 
         ActionUtils.switchwindow();
@@ -132,7 +132,7 @@ public class PinTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
 
         ActionUtils.switchwindow();
@@ -166,7 +166,7 @@ public class PinTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
 
         ActionUtils.switchwindow();
@@ -198,7 +198,7 @@ public class PinTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
 
         ActionUtils.switchwindow();

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class ImageInPopupPage extends Enrichment{
+public class ImageInPopupPage extends Enrichment {
 
     @FindBy(how = How.CSS, using = "input.st-textinput.full")
     private List<WebElement> imagePopupTitleField;
@@ -17,7 +17,7 @@ public class ImageInPopupPage extends Enrichment{
     @FindBy(how = How.CSS, using = "h3.reset.image-title")
     private WebElement popupHeader;
 
-    @FindBy(how = How.CSS, using  = "div.image-popup-viewer.shown")
+    @FindBy(how = How.CSS, using = "div.image-popup-viewer.shown")
     private WebElement imageViewer;
 
     @FindBy(how = How.CSS, using = "div.isPremiumCheckbox")
@@ -26,10 +26,8 @@ public class ImageInPopupPage extends Enrichment{
     @FindBy(id = "mouseoverTextField")
     private WebElement mouseoverSelector;
 
+    public void fillEnrichmentDetails(String title, String mouseover, String path, boolean isPremium) {
 
-    public void fillEnrichmentDetails(String title, String mouseover, String path, boolean isPremium){
-
-        //ActionUtils.waitForElement(imagePopupTitleField.get(0));
         WebElement mouseoverField = getElementByAttributeAndTagname(mouseoverSelector, "class", "st-textinput full",
                 "input");
 
@@ -44,5 +42,11 @@ public class ImageInPopupPage extends Enrichment{
         uploadImageButton.sendKeys(path);
     }
 
+    public void clearEnrichmentDetails(){
 
+        WebElement mouseoverField = getElementByAttributeAndTagname(mouseoverSelector, "class", "st-textinput full",
+                "input");
+        imagePopupTitleField.get(0).clear();
+        mouseoverField.clear();
+    }
 }

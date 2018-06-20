@@ -12,7 +12,7 @@ import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.enums.EnrichmentTypes;
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 
-public class OtherEnrichmentsTests extends BaseClass{
+public class CreateOtherEnrichmentsTests extends BaseClass {
 
     private static BooksOverviewTemplate overviewTemplate;
     private static BookEditorTemplate bookEditorTemplate;
@@ -24,14 +24,14 @@ public class OtherEnrichmentsTests extends BaseClass{
     }
 
     @Test
-    public void addInternalLinkEnrichment() throws InterruptedException{
+    public void addInternalLinkEnrichment() throws InterruptedException {
 
         InternalLinkPage internalLink = PageFactory.initElements(driver, InternalLinkPage.class);
         internalLink.setBookEditorTemplate(bookEditorTemplate);
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
 
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
@@ -54,14 +54,14 @@ public class OtherEnrichmentsTests extends BaseClass{
     }
 
     @Test
-    public void addHotspotImageEnrichment() throws InterruptedException{
+    public void addHotspotImageEnrichment() throws InterruptedException {
 
         HotspotImagePage hotSpot = PageFactory.initElements(driver, HotspotImagePage.class);
         hotSpot.setBookEditorTemplate(bookEditorTemplate);
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
 
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
@@ -84,9 +84,9 @@ public class OtherEnrichmentsTests extends BaseClass{
 
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
-        //bookEditorTemplate.deleteEnrichment(EnrichmentTypes.HotspotImage);
+        bookEditorTemplate.deleteEnrichment(EnrichmentTypes.HotspotImage);
 
-        //System.out.println("hotspot image deleted!");
+        System.out.println("hotspot image deleted!");
 
     }
 }

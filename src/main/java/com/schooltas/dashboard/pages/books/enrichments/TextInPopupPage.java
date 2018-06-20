@@ -43,6 +43,15 @@ public class TextInPopupPage extends Enrichment {
         }
     }
 
+    public void clearEnrichmentDetails(){
+
+        WebElement mouseoverField = getElementByAttributeAndTagname(mouseoverSelector, "class", "st-textinput full",
+                "input");
+        textInPopupPinTitleField.clear();
+        bodyTextArea.clear();
+        mouseoverField.clear();
+    }
+
     public void assertEnrichmentDetails(String text) {
         ActionUtils.waitForElement(bookEditorTemplate.getViewPinCanvas());
         assertEquals(bookEditorTemplate.getViewPinCanvas().getText(), text);

@@ -15,7 +15,7 @@ import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.enums.EnrichmentTypes;
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 
-public class AnswerTests extends BaseClass {
+public class CreateAnswerTests extends BaseClass {
 
     private static BooksOverviewTemplate overviewTemplate;
     private static BookEditorTemplate bookEditorTemplate;
@@ -34,7 +34,7 @@ public class AnswerTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 
@@ -70,7 +70,7 @@ public class AnswerTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 
@@ -107,7 +107,7 @@ public class AnswerTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 
@@ -137,7 +137,7 @@ public class AnswerTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 
@@ -167,7 +167,7 @@ public class AnswerTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 
@@ -197,7 +197,7 @@ public class AnswerTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 
@@ -226,7 +226,7 @@ public class AnswerTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 
@@ -261,7 +261,7 @@ public class AnswerTests extends BaseClass {
 
         dashboardMenu.clickMainMenuOption("Books");
 
-        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN);
+        overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
         overviewTemplate.click("| Edit");
         ActionUtils.switchwindow();
 

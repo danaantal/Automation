@@ -33,8 +33,11 @@ public class BookEditorTemplate {
     @FindBy(how = How.CSS, using = "div.prikker-container.show-markers")
     private List<WebElement> pinOverlay;
 
-    @FindBy(how = How.CSS, using = "button.delete-button.button.red")
+    @FindBy(id = "menu-button-delete")
     private WebElement deleteEnrichmentButton;
+
+    @FindBy(id = "menu-button-edit")
+    private WebElement editButton;
 
     @FindBy(how = How.CSS, using = "div.button.white.red")
     private WebElement confirmDeleteButton;
@@ -72,10 +75,11 @@ public class BookEditorTemplate {
     @FindBy(id = "next-page")
     private WebElement nextPage;
 
-    // @FindBy(how = How.CSS, using = "div.page.shown.loaded")
-    // private List<WebElement> pageShownLoaded;
+    @FindBy(how = How.CSS, using = "div.prikker")
+    private List<WebElement> pinsArray;
 
-    public final static String EAN = "3711413071302";
+    public final static String EAN_CREATE = "3711413071302";
+    public final static String EAN_EDIT = "2154535963702";
     public final static String AUDIO_FILE_ID = "1177537";
     public final static String VIDEO_FILE_ID = "1177536";
 
@@ -126,6 +130,20 @@ public class BookEditorTemplate {
         clickAddNewEnrichmentButton(addNewPinOptions, buttonName);
     }
 
+    public void clickAddNewEnrichmentButton(WebElement webelement, String buttonName) {
+
+        ArrayList<WebElement> addPinButtonsList = getAddPinMenuButtonList(webelement);
+
+        for (WebElement element : addPinButtonsList) {
+
+            boolean isButtonName = element.getText().equals(buttonName);
+            if (isButtonName) {
+                element.click();
+                return;
+            }
+        }
+    }
+
     public void saveEnrichment() {
         ActionUtils.waitForElementToBeClickable(saveBtn);
         saveBtn.click();
@@ -145,18 +163,35 @@ public class BookEditorTemplate {
         ActionUtils.waitForElement(getViewCanvasForEnrichmentType(pinType));// to do handle all cases
     }
 
-    public void clickAddNewEnrichmentButton(WebElement webelement, String buttonName) {
+    public void viewEnrichmentById(String id, EnrichmentTypes pinType) {
 
-        ArrayList<WebElement> addPinButtonsList = getAddPinMenuButtonList(webelement);
+        List<WebElement> pinsOnThePageList = getPinsOnThePage(pinType.getType());
 
-        for (WebElement element : addPinButtonsList) {
-
-            boolean isButtonName = element.getText().equals(buttonName);
-            if (isButtonName) {
-                element.click();
-                return;
+        for (WebElement pin : pinsOnThePageList) {
+            System.out.println("test in for");
+            if (pin.getAttribute("data-node-guid").equals(id)) {
+                pin.click();
+                break;
             }
         }
+    }
+
+    public void editEnrichment(String id, EnrichmentTypes pinType) throws InterruptedException {
+
+        ActionUtils.waitForElement(pinOverlay.get(1));
+
+        List<WebElement> pinsOnThePageList = getPinsOnThePage(pinType.getType());
+
+        for (WebElement pin : pinsOnThePageList) {
+            System.out.println("test in for");
+            if (pin.getAttribute("data-node-guid").equals(id)) {
+                ActionUtils.rightClick(pin);
+                break;
+            }
+        }
+        editAction();
+
+        // ActionUtils.waitForElementInvisible(editButton);
     }
 
     public void deleteEnrichment(EnrichmentTypes pinType) throws InterruptedException {
@@ -192,6 +227,7 @@ public class BookEditorTemplate {
     }
 
     public void assertEnrichmentDetails(String text) {
+
         ActionUtils.waitForElement(getPopupHeader());
         assertEquals(getPopupHeader().getText(), text);
     }
@@ -216,6 +252,11 @@ public class BookEditorTemplate {
         ActionUtils.waitForElement(deleteEnrichmentButton);
         deleteEnrichmentButton.click();
         confirmDeleteButton.click();
+    }
+
+    private void editAction() {
+        ActionUtils.waitForElement(editButton);
+        editButton.click();
     }
 
     private WebElement getViewCanvasForEnrichmentType(EnrichmentTypes type) {

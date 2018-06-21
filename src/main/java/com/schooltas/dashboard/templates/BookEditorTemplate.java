@@ -80,6 +80,7 @@ public class BookEditorTemplate {
 
     public final static String EAN_CREATE = "3711413071302";
     public final static String EAN_EDIT = "2154535963702";
+    public final static String EDIT_AUDIO_FILE_ID = "1177809";
     public final static String AUDIO_FILE_ID = "1177537";
     public final static String VIDEO_FILE_ID = "1177536";
 
@@ -88,7 +89,6 @@ public class BookEditorTemplate {
     }
 
     public void rightClickOnThePage() throws InterruptedException {
-        // Thread.sleep(7000);
         // ActionUtils.waitForElement(alertOverlay.get(0));
 
         // ActionUtils.waitForElement(bookTitlePopup);
@@ -104,7 +104,7 @@ public class BookEditorTemplate {
 
     public void navigateTotheNextPage() {
 
-        ActionUtils.waitForElement(alertOverlay.get(0));
+        ActionUtils.waitForElementToBeVisible(alertOverlay.get(0), 5);
 
         ActionUtils.waitForElement(bookTitlePopup);
 
@@ -163,35 +163,15 @@ public class BookEditorTemplate {
         ActionUtils.waitForElement(getViewCanvasForEnrichmentType(pinType));// to do handle all cases
     }
 
-    public void viewEnrichmentById(String id, EnrichmentTypes pinType) {
+    public void editEnrichment(EnrichmentTypes pinType) throws InterruptedException {
 
+
+        ActionUtils.waitForElementInvisible(loadingIcon);
         List<WebElement> pinsOnThePageList = getPinsOnThePage(pinType.getType());
+        WebElement firstVisiblePin = pinsOnThePageList.get(1);
 
-        for (WebElement pin : pinsOnThePageList) {
-            System.out.println("test in for");
-            if (pin.getAttribute("data-node-guid").equals(id)) {
-                pin.click();
-                break;
-            }
-        }
-    }
-
-    public void editEnrichment(String id, EnrichmentTypes pinType) throws InterruptedException {
-
-        ActionUtils.waitForElement(pinOverlay.get(1));
-
-        List<WebElement> pinsOnThePageList = getPinsOnThePage(pinType.getType());
-
-        for (WebElement pin : pinsOnThePageList) {
-            System.out.println("test in for");
-            if (pin.getAttribute("data-node-guid").equals(id)) {
-                ActionUtils.rightClick(pin);
-                break;
-            }
-        }
+        ActionUtils.rightClick(firstVisiblePin);
         editAction();
-
-        // ActionUtils.waitForElementInvisible(editButton);
     }
 
     public void deleteEnrichment(EnrichmentTypes pinType) throws InterruptedException {
@@ -255,7 +235,7 @@ public class BookEditorTemplate {
     }
 
     private void editAction() {
-        ActionUtils.waitForElement(editButton);
+        ActionUtils.waitForElementToBeVisible(editButton, 5);
         editButton.click();
     }
 
@@ -274,6 +254,7 @@ public class BookEditorTemplate {
         ArrayList<WebElement> pinsOnThePageList = new ArrayList<>();
 
         for (WebElement element : pinsList) {
+            // ActionUtils.waitForElement(element);
 
             boolean isClass = element.getTagName().equals("div");
             String nodeType = element.getAttribute("node-type");

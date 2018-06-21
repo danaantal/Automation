@@ -16,17 +16,32 @@ public class UrlPinPage extends Enrichment {
     @FindBy(how = How.CSS, using = "div.isPremiumCheckbox")
     private WebElement checkboxDiv;
 
-    public void fillEnrichmentDetails(String url, boolean isPremium) {
+    @FindBy(id = "mouseoverTextField")
+    private WebElement mouseoverSelector;
+
+    public void fillEnrichmentDetails(String url, String mouseover, boolean isPremium) {
 
         WebElement input = getElementByAttribute(linkInputList, "placeholder", "http://");
+        WebElement mouseoverField = getElementByAttributeAndTagname(mouseoverSelector, "class", "st-textinput full",
+                "input");
 
         ActionUtils.waitForElement(input);
         input.sendKeys(url);
+        mouseoverField.sendKeys(mouseover);
 
         if (isPremium) {
             WebElement premiumCheckbox = getElementByTagName(checkboxDiv, "label");
             premiumCheckbox.click();
         }
+    }
+
+    public void clearEnrichmentDetails(){
+        WebElement input = getElementByAttribute(linkInputList, "placeholder", "http://");
+        WebElement mouseoverField = getElementByAttributeAndTagname(mouseoverSelector, "class", "st-textinput full",
+                "input");
+
+        input.clear();
+        mouseoverField.clear();
     }
 
 }

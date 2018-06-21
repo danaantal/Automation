@@ -30,7 +30,7 @@ public class ActionUtils extends BaseClass {
     }
 
     public static void waitForElementToBeVisible(WebElement element, int waitTime) {
-        WebDriverWait wait = new WebDriverWait(driver, 1);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
 
         for (int attempt = 0; attempt < waitTime; attempt++) {
             try {

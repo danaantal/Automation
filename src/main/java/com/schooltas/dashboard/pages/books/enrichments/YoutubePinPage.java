@@ -39,4 +39,15 @@ public class YoutubePinPage extends Enrichment {
             premiumCheckbox.click();
         }
     }
+
+    public void clearEnrichmentDetails(){
+        WebElement linkInput = getElementByAttribute(linkInputList, "placeholder", "http://");
+        WebElement titleField = getElementByAttributeAndTagname(titleInputDiv, "class", "st-textinput full", "input");
+        WebElement mouseoverInput = getElementByAttributeAndTagname(mouseoverField, "class", "st-textinput full",
+                "input");
+
+        linkInput.clear();
+        titleField.clear();
+        mouseoverInput.clear();
+    }
 }

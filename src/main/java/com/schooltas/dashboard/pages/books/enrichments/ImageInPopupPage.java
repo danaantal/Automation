@@ -39,7 +39,9 @@ public class ImageInPopupPage extends Enrichment {
             premiumCheckbox.click();
         }
 
-        uploadImageButton.sendKeys(path);
+        if(!path.equals("")) {
+            uploadImageButton.sendKeys(path);
+        }
     }
 
     public void clearEnrichmentDetails(){

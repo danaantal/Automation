@@ -49,10 +49,23 @@ public class CreatePinTests extends BaseClass {
         textInPopupPage.fillEnrichmentDetailsFields("Test title", "Body text test", "mouseover text", true);
 
         bookEditorTemplate.saveEnrichment();
+
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
         bookEditorTemplate.viewEnrichment(EnrichmentTypes.Text);
 
         textInPopupPage.assertEnrichmentDetails("Test title\nBody text test");
+        ActionUtils.pressEscKey();
+
+        bookEditorTemplate.editEnrichment(EnrichmentTypes.Text);
+        textInPopupPage.clearEnrichmentDetails();
+
+        textInPopupPage.fillEnrichmentDetailsFields("Edit Test title", "Edit Body text test", "mouseover text", false);
+        bookEditorTemplate.saveEnrichment();
+
+        ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
+        bookEditorTemplate.viewEnrichment(EnrichmentTypes.Text);
+
+        textInPopupPage.assertEnrichmentDetails("Edit Test title\nEdit Body text test");
         ActionUtils.pressEscKey();
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Text);
@@ -65,7 +78,6 @@ public class CreatePinTests extends BaseClass {
 
         ImageInPopupPage imageInPopupPage = PageFactory.initElements(driver, ImageInPopupPage.class);
         imageInPopupPage.setBookEditorTemplate(bookEditorTemplate);
-
 
         dashboardMenu.clickMainMenuOption("Books");
         overviewTemplate.searchForEntityByEan(BookEditorTemplate.EAN_CREATE);
@@ -80,7 +92,8 @@ public class CreatePinTests extends BaseClass {
 
         bookEditorTemplate.waitForSideMenu();
 
-        imageInPopupPage.fillEnrichmentDetails("Test image in popup", "mouseover text", "/Users/dantal/Downloads/PDFs/test2.jpg", true);
+        imageInPopupPage.fillEnrichmentDetails("Test image in popup", "mouseover text",
+                "/Users/dantal/Downloads/PDFs/test2.jpg", true);
         bookEditorTemplate.saveEnrichment();
 
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
@@ -88,6 +101,21 @@ public class CreatePinTests extends BaseClass {
         bookEditorTemplate.viewEnrichment(EnrichmentTypes.Gallery);
 
         bookEditorTemplate.assertEnrichmentDetails("Test image in popup");
+
+        ActionUtils.pressEscKey();
+
+        bookEditorTemplate.editEnrichment(EnrichmentTypes.Gallery);
+        imageInPopupPage.clearEnrichmentDetails();
+
+        imageInPopupPage.fillEnrichmentDetails("Edit Test image in popup", "mouseover text",
+                "/Users/dantal/Downloads/PDFs/test2.jpg", false);
+        bookEditorTemplate.saveEnrichment();
+
+        ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
+
+        bookEditorTemplate.viewEnrichment(EnrichmentTypes.Gallery);
+
+        bookEditorTemplate.assertEnrichmentDetails("Edit Test image in popup");
 
         ActionUtils.pressEscKey();
 
@@ -115,10 +143,20 @@ public class CreatePinTests extends BaseClass {
 
         bookEditorTemplate.waitForSideMenu();
 
-        urlPinPage.fillEnrichmentDetails("http://thecodinglove.com/post/79149589869/hey-look-the-bug-is-fixed", true);
+        urlPinPage.fillEnrichmentDetails("http://thecodinglove.com/post/79149589869/hey-look-the-bug-is-fixed",
+                "mouseover text", true);
 
         bookEditorTemplate.saveEnrichment();
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
+
+        bookEditorTemplate.editEnrichment(EnrichmentTypes.Link);
+        urlPinPage.clearEnrichmentDetails();
+
+        urlPinPage.fillEnrichmentDetails(
+                "https://www.goodreads.com/book/show/13588561-help-them-grow-or-watch-them-go?ac=1&from_search=true",
+                "mouseover text", false);
+
+        bookEditorTemplate.saveEnrichment();
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Link);
 
@@ -154,6 +192,13 @@ public class CreatePinTests extends BaseClass {
 
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
+        bookEditorTemplate.editEnrichment(EnrichmentTypes.Audio);
+        mediaPinPage.clearEnrichmentDetails();
+
+        mediaPinPage.fillEnrichmentDetails("Edit Title", "Edit MouseoverText", false);
+
+        bookEditorTemplate.saveEnrichment();
+
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Audio);
 
         System.out.println("audio deleted!");
@@ -186,6 +231,13 @@ public class CreatePinTests extends BaseClass {
 
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
 
+        bookEditorTemplate.editEnrichment(EnrichmentTypes.Video);
+        mediaPinPage.clearEnrichmentDetails();
+
+        mediaPinPage.fillEnrichmentDetails("Edit Title", "Edit MouseoverText", false);
+
+        bookEditorTemplate.saveEnrichment();
+
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Video);
 
         System.out.println("video deleted!");
@@ -210,10 +262,18 @@ public class CreatePinTests extends BaseClass {
 
         bookEditorTemplate.waitForSideMenu();
 
-        youtubePinPage.fillEnrichmentDetails("https://www.youtube.com/watch?v=1SL1bSysul8", "Title", "mouseover text", true);
+        youtubePinPage.fillEnrichmentDetails("https://www.youtube.com/watch?v=1SL1bSysul8", "Title", "mouseover text",
+                true);
 
         bookEditorTemplate.saveEnrichment();
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
+
+        bookEditorTemplate.editEnrichment(EnrichmentTypes.Youtube);
+        youtubePinPage.clearEnrichmentDetails();
+
+        youtubePinPage.fillEnrichmentDetails("https://www.youtube.com/watch?v=1SL1bSysul8", "Edit Title", "mouseover text",
+                false);
+        bookEditorTemplate.saveEnrichment();
 
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.Youtube);
 

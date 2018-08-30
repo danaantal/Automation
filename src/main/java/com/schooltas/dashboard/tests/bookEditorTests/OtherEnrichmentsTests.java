@@ -12,7 +12,7 @@ import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.enums.EnrichmentTypes;
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 
-public class CreateOtherEnrichmentsTests extends BaseClass {
+public class OtherEnrichmentsTests extends BaseClass {
 
     private static BooksOverviewTemplate overviewTemplate;
     private static BookEditorTemplate bookEditorTemplate;

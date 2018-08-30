@@ -15,7 +15,7 @@ import com.schooltas.dashboard.tests.BaseClass;
 import com.schooltas.dashboard.utils.enums.EnrichmentTypes;
 import com.schooltas.dashboard.utils.utils.ActionUtils;
 
-public class CreateAnswerTests extends BaseClass {
+public class AnswerTests extends BaseClass {
 
     private static BooksOverviewTemplate overviewTemplate;
     private static BookEditorTemplate bookEditorTemplate;
@@ -55,6 +55,12 @@ public class CreateAnswerTests extends BaseClass {
         bookEditorTemplate.saveEnrichment();
 
         ActionUtils.waitForElementInvisible(bookEditorTemplate.getLoadingIcon());
+
+        bookEditorTemplate.editEnrichment(EnrichmentTypes.AnswerText);
+        textOnPageAnswer.fillAnswerText("Edit text");
+        textOnPageAnswer.chooseLineHeight("20");
+        bookEditorTemplate.saveEnrichment();
+
         //view enrichment
         bookEditorTemplate.deleteEnrichment(EnrichmentTypes.AnswerText);
 
